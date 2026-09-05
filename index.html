@@ -161,6 +161,20 @@
     .stat .label { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
 
     /* About */
+
+    /* Services */
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px; box-shadow: var(--shadow); display: flex; flex-direction: column; gap: 4px;
+      transition: all .25s;
+    }
+    .service-card:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .service-icon { font-size: 28px; margin-bottom: 10px; }
+    .service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .service-card .desc { color: var(--muted); font-size: 14px; margin-bottom: 16px; flex: 1; }
+    .service-cta a { font-size: 14px; font-weight: 600; }
+
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
     .about-text p { color: var(--muted); margin-bottom: 16px; font-size: 16px; }
     .about-text p b { color: var(--text); }
@@ -264,6 +278,7 @@
       .skills-grid { grid-template-columns: 1fr; }
       .about-grid { grid-template-columns: 1fr; gap: 24px; }
       .nav-links { gap: 14px; }
+      .services-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 560px) {
       .nav-links a { font-size: 13px; }
@@ -283,6 +298,7 @@
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#projects">Work</a>
+        <a href="#services">Services</a>
         <a href="#skills">Skills</a>
         <a href="#experience">Experience</a>
         <a href="#contact">Contact</a>
@@ -437,6 +453,35 @@
           </div>
         </div>
 
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+      <div class="container">
+        <div class="section-label">How I can help</div>
+        <h2>Services & gigs</h2>
+        <p class="lead">Beyond hiring, I work directly with founders and teams. Low-risk first step, then deeper if it fits.</p>
+        <div class="services-grid">
+          <div class="service-card">
+            <div class="service-icon">🔍</div>
+            <h3>AI automation audit</h3>
+            <p class="desc">I map your recruitment, operations, or marketing workflow and show which steps agentic AI can automate. You get a written list of quick wins with guardrails, in one working session.</p>
+            <div class="service-cta"><a href="mailto:sonuyeahdav@gmail.com?subject=AI%20Automation%20Audit">Book an audit →</a></div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">🛠️</div>
+            <h3>Agentic AI build</h3>
+            <p class="desc">I partner with teams to build AI solutions on real business problems. I design the agent flow, set the guardrails, and ship a working demo you can show users. HIREin is the pattern.</p>
+            <div class="service-cta"><a href="mailto:sonuyeahdav@gmail.com?subject=Build%20Partnership">Start a build →</a></div>
+          </div>
+          <div class="service-card">
+            <div class="service-icon">📈</div>
+            <h3>AI PM + go-to-market</h3>
+            <p class="desc">I help teams launch AI features that land. I align the technical work with a business goal, then build the positioning and messaging. Full-funnel, from someone who shipped and sold.</p>
+            <div class="service-cta"><a href="mailto:sonuyeahdav@gmail.com?subject=Go%20to%20Market">Talk strategy →</a></div>
+          </div>
+        </div>
       </div>
     </section>
 
