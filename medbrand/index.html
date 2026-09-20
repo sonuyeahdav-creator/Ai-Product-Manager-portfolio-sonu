@@ -3,68 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="EmpowerMed 45-day global healthcare SDR accelerator for Madagascar. Train for remote healthcare sales, client communication, and clinic operations roles. Free live orientation session inside.">
-  <title>EmpowerMed | 45-Day Global Healthcare SDR Accelerator</title>
+  <meta name="description" content="MedBrand and EmpowerMed 45-day global healthcare accelerator for Madagascar. AI-driven workflows, HIPAA-conscious outreach, and direct connections between Malagasy talent and independent global clinics.">
+  <title>MedBrand | EmpowerMed 45-Day Global Healthcare SDR Accelerator</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Crect x='4' y='4' width='40' height='40' rx='10' fill='%231e2942'/%3E%3Crect x='21' y='10' width='6' height='28' rx='2' fill='%23fff'/%3E%3Crect x='10' y='21' width='28' height='6' rx='2' fill='%23fff'/%3E%3Cpolyline points='10,24 17,24 20,18 23,30 26,24 38,24' fill='none' stroke='%2325D366' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #0284c7;
-      --primary-dark: #0369a1;
-      --primary-light: #e0f2fe;
-      --dark: #0f172a;
-      --gray-900: #1e293b;
-      --gray-600: #475569;
-      --gray-100: #f1f5f9;
-      --gray-50: #f8fafc;
-      --white: #ffffff;
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --accent: #1e2942;
+      --accent-dark: #151d30;
+      --accent-soft: #eef2f8;
+      --text: #334155;
+      --muted: #64748b;
+      --border: #1e2942;
       --whatsapp: #25D366;
       --whatsapp-dark: #128C7E;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', sans-serif; color: var(--gray-900); background-color: var(--white); line-height: 1.6; }
-    h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--dark); font-weight: 700; }
+    body { font-family: 'Inter', sans-serif; color: var(--text); background-color: var(--bg); line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--accent); font-weight: 700; }
     .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
-    a { color: var(--primary); }
+    a { color: var(--accent); }
 
     /* Header */
-    header { background: var(--white); border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
-    .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 70px; gap: 12px; }
-    .brand { font-size: 1.35rem; font-weight: 800; color: var(--dark); text-decoration: none; }
-    .brand span { color: var(--primary); }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 50; }
+    .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 82px; gap: 16px; }
+    .brand-wrap { display: flex; flex-direction: column; gap: 1px; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-size: 1.35rem; font-weight: 800; color: var(--accent); text-decoration: none; line-height: 1.1; }
+    .brand .logo { width: 38px; height: 38px; flex-shrink: 0; }
+    .brand-tagline { font-size: 0.72rem; color: var(--muted); font-weight: 500; margin-left: 48px; white-space: nowrap; }
     .header-right { display: flex; align-items: center; gap: 12px; }
-    .badge-pill { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; padding: 6px 14px; border-radius: 9999px; font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
-    .btn-whatsapp-sm { display: inline-flex; align-items: center; gap: 7px; background: var(--whatsapp); color: #fff; font-size: 0.85rem; font-weight: 700; padding: 9px 16px; border-radius: 9999px; text-decoration: none; transition: background 0.2s; }
+    .badge-pill { background: var(--accent-soft); color: var(--accent); border: 1px solid var(--border); padding: 6px 14px; border-radius: 9999px; font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
+    .btn-whatsapp-sm { display: inline-flex; align-items: center; gap: 7px; background: var(--whatsapp); color: #fff; font-size: 0.85rem; font-weight: 700; padding: 9px 16px; border-radius: 9999px; text-decoration: none; transition: background 0.2s; white-space: nowrap; }
     .btn-whatsapp-sm:hover { background: var(--whatsapp-dark); }
 
     /* Hero */
-    .hero { padding: 60px 0 50px; background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.06) 0%, #fff 70%); }
+    .hero { padding: 60px 0 50px; background: radial-gradient(circle at 10% 20%, rgba(30, 41, 66, 0.07) 0%, var(--bg) 70%); }
     .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
-    .hero-kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--primary-light); color: var(--primary-dark); font-weight: 700; font-size: 0.8rem; padding: 6px 12px; border-radius: 9999px; margin-bottom: 16px; letter-spacing: 0.02em; }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--accent-soft); color: var(--accent); font-weight: 700; font-size: 0.8rem; padding: 6px 12px; border-radius: 9999px; border: 1px solid var(--border); margin-bottom: 16px; letter-spacing: 0.02em; }
+    .hero-kicker .pulse-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--whatsapp); }
     .hero-content h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.2; }
-    .hero-content p.subtitle { font-size: 1.05rem; color: var(--gray-600); margin-bottom: 20px; }
+    .hero-content p.subtitle { font-size: 1.05rem; color: var(--muted); margin-bottom: 20px; }
     .hero-cta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
-    .btn-primary-lg { display: inline-flex; align-items: center; gap: 9px; background: var(--primary); color: #fff; font-weight: 700; font-size: 0.98rem; padding: 13px 22px; border-radius: 9px; text-decoration: none; transition: background 0.2s; }
-    .btn-primary-lg:hover { background: var(--primary-dark); }
+    .btn-primary-lg { display: inline-flex; align-items: center; gap: 9px; background: var(--accent); color: #fff; font-weight: 700; font-size: 0.98rem; padding: 13px 22px; border-radius: 9px; text-decoration: none; transition: background 0.2s; }
+    .btn-primary-lg:hover { background: var(--accent-dark); }
     .muted-note { font-size: 0.8rem; color: #94a3b8; }
 
-    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
-    .stat-item h4 { font-size: 1.25rem; color: var(--primary); margin-bottom: 4px; }
-    .stat-item p { font-size: 0.82rem; color: var(--gray-600); }
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); }
+    .stat-item h4 { font-size: 1.25rem; color: var(--accent); margin-bottom: 4px; }
+    .stat-item p { font-size: 0.82rem; color: var(--muted); }
 
     /* Form Card */
-    .form-card { background: var(--white); border: 1px solid #e2e8f0; border-radius: 18px; padding: 30px; box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.10); }
-    .form-badge { background: #eff6ff; color: var(--primary-dark); font-weight: 700; font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; display: inline-block; margin-bottom: 10px; }
+    .form-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 30px; box-shadow: 0 15px 30px -18px rgba(21, 29, 48, 0.28); }
+    .form-badge { background: var(--accent-soft); border: 1px solid var(--border); color: var(--accent); font-weight: 700; font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; display: inline-block; margin-bottom: 10px; }
     .form-card h3 { font-size: 1.35rem; margin-bottom: 6px; }
-    .form-card p.form-desc { color: var(--gray-600); font-size: 0.88rem; margin-bottom: 18px; }
+    .form-card p.form-desc { color: var(--muted); font-size: 0.88rem; margin-bottom: 18px; }
 
     .form-group { margin-bottom: 14px; }
-    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 5px; }
-    .form-group input, .form-group select { width: 100%; padding: 11px 13px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; font-family: inherit; outline: none; background: var(--white); }
-    .form-group input:focus, .form-group select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15); }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 5px; color: var(--text); }
+    .form-group input, .form-group select { width: 100%; padding: 11px 13px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.9rem; font-family: inherit; outline: none; background: var(--surface); color: var(--text); }
+    .form-group input:focus, .form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(30, 41, 66, 0.15); }
     .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
 
     .btn-submit { width: 100%; background: var(--whatsapp); color: #fff; font-size: 0.98rem; font-weight: 700; padding: 13px; border: none; border-radius: 9px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; transition: background 0.2s; margin-top: 8px; }
@@ -75,48 +78,50 @@
     .privacy-notice { font-size: 0.75rem; color: #94a3b8; text-align: center; margin-top: 12px; }
 
     /* Pillars */
-    .section-pillars { padding: 70px 0; background: var(--gray-50); }
+    .section-pillars { padding: 70px 0; border-bottom: 1px solid rgba(30, 41, 66, 0.12); }
     .section-title { text-align: center; max-width: 650px; margin: 0 auto 40px; }
     .section-title h2 { font-size: 2rem; margin-bottom: 10px; }
-    .section-title p { color: var(--gray-600); font-size: 0.98rem; }
+    .section-title p { color: var(--muted); font-size: 0.98rem; }
     .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .pillar-card { background: var(--white); padding: 24px; border-radius: 14px; border: 1px solid #e2e8f0; }
+    .pillar-card { background: var(--surface); padding: 24px; border-radius: 12px; border: 1px solid var(--border); }
     .pillar-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
-    .pillar-card p { color: var(--gray-600); font-size: 0.88rem; }
+    .pillar-card p { color: var(--muted); font-size: 0.88rem; }
 
     /* Roadmap */
-    .section-roadmap { padding: 70px 0; }
+    .section-roadmap { padding: 70px 0; border-bottom: 1px solid rgba(30, 41, 66, 0.12); }
     .roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .roadmap-card { border: 1px solid #e2e8f0; border-left: 4px solid var(--primary); padding: 20px 22px; border-radius: 10px; background: var(--white); }
-    .roadmap-card .week { font-size: 0.75rem; font-weight: 700; color: var(--primary-dark); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .roadmap-card { border: 1px solid var(--border); border-left: 4px solid var(--accent); padding: 20px 22px; border-radius: 10px; background: var(--surface); }
+    .roadmap-card .week { font-size: 0.75rem; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
     .roadmap-card h4 { font-size: 1rem; margin-bottom: 6px; }
-    .roadmap-card p { font-size: 0.84rem; color: var(--gray-600); }
+    .roadmap-card p { font-size: 0.84rem; color: var(--muted); }
 
     /* Quote */
-    .quote-strip { background: var(--primary-dark); color: #fff; padding: 44px 0; }
+    .quote-strip { background: var(--accent); color: #fff; padding: 44px 0; }
     .quote-strip .container { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
     .quote-strip .quote-text { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 700; max-width: 760px; }
     .quote-strip .quote-sub { font-size: 0.9rem; opacity: 0.85; }
 
     /* FAQ */
-    .section-faq { padding: 70px 0; background: var(--gray-50); }
+    .section-faq { padding: 70px 0; border-bottom: 1px solid rgba(30, 41, 66, 0.12); }
     .faq-list { max-width: 720px; margin: 0 auto; }
-    details { background: var(--white); border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 10px; padding: 0 20px; }
-    summary { cursor: pointer; font-weight: 600; font-size: 0.95rem; padding: 15px 0; color: var(--dark); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    details { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; margin-bottom: 10px; padding: 0 20px; }
+    summary { cursor: pointer; font-weight: 600; font-size: 0.95rem; padding: 15px 0; color: var(--accent); list-style: none; display: flex; justify-content: space-between; align-items: center; }
     summary::-webkit-details-marker { display: none; }
-    summary::after { content: "+"; font-size: 1.2rem; color: var(--primary); }
+    summary::after { content: "+"; font-size: 1.2rem; color: var(--accent); }
     details[open] summary::after { content: "–"; }
-    details p { font-size: 0.88rem; color: var(--gray-600); padding-bottom: 16px; }
+    details p { font-size: 0.88rem; color: var(--muted); padding-bottom: 16px; }
 
     /* Footer */
-    footer { background: var(--dark); color: #cbd5e1; padding: 34px 0; }
+    footer { background: var(--accent-dark); color: #cbd5e1; padding: 34px 0; }
     .footer-grid { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
-    footer .brand { color: #fff; }
-    footer p { font-size: 0.82rem; color: #94a3b8; }
+    .footer-brand { display: flex; align-items: center; gap: 10px; }
+    footer .brand { color: #fff; margin-bottom: 2px; }
+    footer p.foot-tagline { font-size: 0.82rem; color: #94a3b8; margin-left: 48px; }
+    footer p.foot-note { font-size: 0.82rem; color: #94a3b8; }
     footer a { color: var(--whatsapp); }
 
     /* Floating WhatsApp */
-    .wa-float { position: fixed; bottom: 22px; right: 22px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: var(--whatsapp); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 18px rgba(37, 211, 102, 0.35); text-decoration: none; transition: transform 0.2s; }
+    .wa-float { position: fixed; bottom: 22px; right: 22px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: var(--whatsapp); color: #fff; display: flex; align-items: center; justify-content: center; border: 2px solid #fff; box-shadow: 0 8px 18px rgba(37, 211, 102, 0.35); text-decoration: none; transition: transform 0.2s; }
     .wa-float:hover { transform: translateY(-3px); background: var(--whatsapp-dark); }
 
     /* Responsive */
@@ -125,11 +130,13 @@
       .hero-content h1 { font-size: 2.05rem; }
       .pillar-grid, .roadmap-grid { grid-template-columns: 1fr 1fr; }
     }
+    @media (max-width: 700px) {
+      .brand-tagline, footer p.foot-tagline { display: none; }
+    }
     @media (max-width: 600px) {
       .pillar-grid, .roadmap-grid { grid-template-columns: 1fr; }
       .header-right .badge-pill { display: none; }
-      .brand { font-size: 1.15rem; }
-      .stats-row { gap: 14px; }
+      .nav-wrap { height: 72px; }
       .wa-float { width: 50px; height: 50px; }
     }
   </style>
@@ -138,10 +145,21 @@
 
   <header>
     <div class="container nav-wrap">
-      <a href="#top" class="brand">Empower<span>Med</span></a>
+      <div class="brand-wrap">
+        <a href="#top" class="brand" aria-label="MedBrand home">
+          <svg class="logo" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="4" y="4" width="40" height="40" rx="10" fill="#1e2942"/>
+            <rect x="21" y="10" width="6" height="28" rx="2" fill="#ffffff"/>
+            <rect x="10" y="21" width="28" height="6" rx="2" fill="#ffffff"/>
+            <polyline points="10,24 17,24 20,18 23,30 26,24 38,24" fill="none" stroke="#25D366" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>MedBrand</span>
+        </a>
+        <span class="brand-tagline">Strategic PR and product solutions for modern healthcare providers</span>
+      </div>
       <div class="header-right">
         <span class="badge-pill">Madagascar Cohort 1</span>
-        <a class="btn-whatsapp-sm" href="#leadForm">Join WhatsApp Group</a>
+        <a class="btn-whatsapp-sm" href="#leadForm">Join the group</a>
       </div>
     </div>
   </header>
@@ -149,12 +167,12 @@
   <section class="hero" id="top">
     <div class="container hero-grid">
       <div class="hero-content">
-        <span class="hero-kicker">45-Day Global Healthcare SDR Accelerator</span>
-        <h1>Break into global healthcare sales, without leaving Madagascar</h1>
+        <span class="hero-kicker"><span class="pulse-dot"></span> The EmpowerMed accelerator, by MedBrand</span>
+        <h1>Malagasy talent, connected directly to independent global clinics</h1>
         <p class="subtitle">
-          Train for remote healthcare roles in client communication, lead qualification, and clinic operations.
-          Finish with interview-ready English and a direct line to international clinics and telehealth providers
-          paying <strong>1,800,000 to 3,500,000 MGA/month</strong>.
+          A 45-day program that trains you in AI-driven clinic workflows, HIPAA-conscious outreach, and the business
+          English clinics expect. Finish interview-ready and connected to remote roles paying
+          <strong>1,800,000 to 3,500,000 MGA/month</strong>.
         </p>
 
         <div class="hero-cta">
@@ -172,8 +190,8 @@
             <p>Early bird seat, orientation included</p>
           </div>
           <div class="stat-item">
-            <h4>Remote First</h4>
-            <p>Built for international contracts</p>
+            <h4>Direct Match</h4>
+            <p>Connected to remote clinic roles</p>
           </div>
         </div>
       </div>
@@ -227,27 +245,27 @@
   <section class="section-pillars">
     <div class="container">
       <div class="section-title">
-        <h2>What We Train You For</h2>
-        <p>Skills designed to land contracts with international private clinics and telehealth providers.</p>
+        <h2>MedBrand's Three Pillars</h2>
+        <p>How we build the bridge between Malagasy talent and independent global clinics.</p>
       </div>
 
       <div class="pillar-grid">
         <div class="pillar-card">
-          <div class="pillar-icon">&#127961;&#65039;</div>
-          <h3>Healthcare SDR Skills</h3>
-          <p>Clinic triage, booking patient consultations, and understanding medical workflows with HIPAA data ethics.</p>
+          <div class="pillar-icon">&#129302;</div>
+          <h3>AI-Driven Workflows</h3>
+          <p>Every program runs on AI-driven workflows: training tools, practice scenarios, and clinic-side automation that mirror what modern providers already use.</p>
         </div>
 
         <div class="pillar-card">
-          <div class="pillar-icon">&#128483;&#65039;</div>
-          <h3>Business English &amp; Polish</h3>
-          <p>Moving from conversational English to clear, professional client communication for North American and European teams.</p>
+          <div class="pillar-icon">&#128274;</div>
+          <h3>HIPAA-Conscious Outreach</h3>
+          <p>You learn consent-first, secure-by-default communication. The same standards clinics demand, applied to every script, message, and patient interaction.</p>
         </div>
 
         <div class="pillar-card">
-          <div class="pillar-icon">&#127919;</div>
-          <h3>1:1 Coaching &amp; Roleplays</h3>
-          <p>Overcoming gatekeepers, handling objections with empathy, and live call audits with senior mentors.</p>
+          <div class="pillar-icon">&#127760;</div>
+          <h3>Direct Clinic Connections</h3>
+          <p>The core promise. We train Malagasy talent, then connect each graduate directly to independent global clinics that need qualified remote staff.</p>
         </div>
       </div>
     </div>
@@ -265,17 +283,17 @@
         <div class="roadmap-card">
           <div class="week">Week 1 to 2</div>
           <h4>Foundations</h4>
-          <p>Clinic workflows, patient journeys, and the vocabulary doctors and front desks actually use.</p>
+          <p>AI-driven clinic workflows, patient journeys, and the vocabulary doctors and front desks actually use.</p>
         </div>
         <div class="roadmap-card">
           <div class="week">Week 3 to 4</div>
-          <h4>Sales &amp; English Practice</h4>
-          <p>Lead qualification scripts, objection handling, and daily speaking drills with mentors.</p>
+          <h4>Outreach &amp; English Practice</h4>
+          <p>HIPAA-conscious outreach scripts, objection handling, and daily speaking drills with mentors.</p>
         </div>
         <div class="roadmap-card">
           <div class="week">Week 5 to 6</div>
           <h4>Placement Prep</h4>
-          <p>Audio resume, mock interviews, and introductions matched to real international clinic roles.</p>
+          <p>Audio resume, mock interviews, and direct introductions matched to independent global clinics.</p>
         </div>
       </div>
     </div>
@@ -284,8 +302,8 @@
   <!-- Quote Strip -->
   <section class="quote-strip">
     <div class="container">
-      <p class="quote-text">"Most global clinics are hiring remote staff right now. The gap is people who can speak their language and run their process."</p>
-      <p class="quote-sub">The EmpowerMed approach: qualify, communicate, operate. Then you are hireable anywhere.</p>
+      <p class="quote-text">"Strategic PR and product solutions for modern healthcare providers."</p>
+      <p class="quote-sub">MedBrand trains and connects Malagasy talent to independent global clinics, powered by AI workflows and HIPAA-conscious outreach.</p>
     </div>
   </section>
 
@@ -304,7 +322,7 @@
         </details>
         <details>
           <summary>Do I need healthcare experience?</summary>
-          <p>No. You need discipline and a working smartphone or laptop. Healthcare workflow knowledge is trained from zero.</p>
+          <p>No. You need discipline and a working smartphone or laptop. AI-driven clinic workflows and HIPAA-conscious communication are trained from zero.</p>
         </details>
         <details>
           <summary>Is the salary figure realistic for Madagascar?</summary>
@@ -312,7 +330,7 @@
         </details>
         <details>
           <summary>Are these remote jobs?</summary>
-          <p>Yes. The program trains you for remote roles with international clinics and telehealth providers. You work from home.</p>
+          <p>Yes. MedBrand connects you directly to independent global clinics hiring remote staff. You work from home with international teams.</p>
         </details>
         <details>
           <summary>What happens after I register?</summary>
@@ -325,10 +343,18 @@
   <footer>
     <div class="container footer-grid">
       <div>
-        <div class="brand">Empower<span>Med</span></div>
-        <p>Madagascar Cohort 1. For questions, message us on <a href="https://chat.whatsapp.com/KxCrHvtWBZD6r1wCIhyxsl" target="_blank" rel="noopener">WhatsApp</a>.</p>
+        <div class="footer-brand">
+          <svg class="logo" width="34" height="34" viewBox="0 0 48 48" aria-hidden="true">
+            <rect x="4" y="4" width="40" height="40" rx="10" fill="#ffffff"/>
+            <rect x="21" y="10" width="6" height="28" rx="2" fill="#1e2942"/>
+            <rect x="10" y="21" width="28" height="6" rx="2" fill="#1e2942"/>
+            <polyline points="10,24 17,24 20,18 23,30 26,24 38,24" fill="none" stroke="#25D366" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="brand">MedBrand</span>
+        </div>
+        <p class="foot-tagline">Strategic PR and product solutions for modern healthcare providers</p>
       </div>
-      <p>&copy; <span id="year"></span> EmpowerMed. All rights reserved.</p>
+      <p class="foot-note">&copy; <span id="year"></span> MedBrand. EmpowerMed is a MedBrand program.<br>For questions, message us on <a href="https://chat.whatsapp.com/KxCrHvtWBZD6r1wCIhyxsl" target="_blank" rel="noopener">WhatsApp</a>.</p>
     </div>
   </footer>
 
