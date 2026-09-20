@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EmpowerMed 45-day global healthcare SDR accelerator for Madagascar. Train for remote healthcare sales, client communication, and clinic operations roles. Free live orientation session inside.">
+  <title>EmpowerMed | 45-Day Global Healthcare SDR Accelerator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --dark: #0f172a;
+      --gray-900: #1e293b;
+      --gray-600: #475569;
+      --gray-100: #f1f5f9;
+      --gray-50: #f8fafc;
+      --white: #ffffff;
+      --whatsapp: #25D366;
+      --whatsapp-dark: #128C7E;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; color: var(--gray-900); background-color: var(--white); line-height: 1.6; }
+    h1, h2, h3, h4 { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--dark); font-weight: 700; }
+    .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+    a { color: var(--primary); }
+
+    /* Header */
+    header { background: var(--white); border-bottom: 1px solid #e2e8f0; position: sticky; top: 0; z-index: 50; }
+    .nav-wrap { display: flex; justify-content: space-between; align-items: center; height: 70px; gap: 12px; }
+    .brand { font-size: 1.35rem; font-weight: 800; color: var(--dark); text-decoration: none; }
+    .brand span { color: var(--primary); }
+    .header-right { display: flex; align-items: center; gap: 12px; }
+    .badge-pill { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; padding: 6px 14px; border-radius: 9999px; font-size: 0.82rem; font-weight: 600; white-space: nowrap; }
+    .btn-whatsapp-sm { display: inline-flex; align-items: center; gap: 7px; background: var(--whatsapp); color: #fff; font-size: 0.85rem; font-weight: 700; padding: 9px 16px; border-radius: 9999px; text-decoration: none; transition: background 0.2s; }
+    .btn-whatsapp-sm:hover { background: var(--whatsapp-dark); }
+
+    /* Hero */
+    .hero { padding: 60px 0 50px; background: radial-gradient(circle at 10% 20%, rgba(2, 132, 199, 0.06) 0%, #fff 70%); }
+    .hero-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 48px; align-items: center; }
+    .hero-kicker { display: inline-flex; align-items: center; gap: 8px; background: var(--primary-light); color: var(--primary-dark); font-weight: 700; font-size: 0.8rem; padding: 6px 12px; border-radius: 9999px; margin-bottom: 16px; letter-spacing: 0.02em; }
+    .hero-content h1 { font-size: 2.5rem; letter-spacing: -0.02em; margin-bottom: 16px; line-height: 1.2; }
+    .hero-content p.subtitle { font-size: 1.05rem; color: var(--gray-600); margin-bottom: 20px; }
+    .hero-cta { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-bottom: 8px; }
+    .btn-primary-lg { display: inline-flex; align-items: center; gap: 9px; background: var(--primary); color: #fff; font-weight: 700; font-size: 0.98rem; padding: 13px 22px; border-radius: 9px; text-decoration: none; transition: background 0.2s; }
+    .btn-primary-lg:hover { background: var(--primary-dark); }
+    .muted-note { font-size: 0.8rem; color: #94a3b8; }
+
+    .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 28px; padding-top: 24px; border-top: 1px solid #e2e8f0; }
+    .stat-item h4 { font-size: 1.25rem; color: var(--primary); margin-bottom: 4px; }
+    .stat-item p { font-size: 0.82rem; color: var(--gray-600); }
+
+    /* Form Card */
+    .form-card { background: var(--white); border: 1px solid #e2e8f0; border-radius: 18px; padding: 30px; box-shadow: 0 15px 30px -10px rgba(15, 23, 42, 0.10); }
+    .form-badge { background: #eff6ff; color: var(--primary-dark); font-weight: 700; font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; display: inline-block; margin-bottom: 10px; }
+    .form-card h3 { font-size: 1.35rem; margin-bottom: 6px; }
+    .form-card p.form-desc { color: var(--gray-600); font-size: 0.88rem; margin-bottom: 18px; }
+
+    .form-group { margin-bottom: 14px; }
+    .form-group label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 5px; }
+    .form-group input, .form-group select { width: 100%; padding: 11px 13px; border: 1px solid #cbd5e1; border-radius: 8px; font-size: 0.9rem; font-family: inherit; outline: none; background: var(--white); }
+    .form-group input:focus, .form-group select:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15); }
+    .hp-field { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+
+    .btn-submit { width: 100%; background: var(--whatsapp); color: #fff; font-size: 0.98rem; font-weight: 700; padding: 13px; border: none; border-radius: 9px; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; transition: background 0.2s; margin-top: 8px; }
+    .btn-submit:hover { background: var(--whatsapp-dark); }
+    .btn-submit:disabled { opacity: 0.65; cursor: wait; }
+    .form-msg { display: none; font-size: 0.82rem; margin-top: 10px; padding: 10px 12px; border-radius: 8px; }
+    .form-msg.error { display: block; background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+    .privacy-notice { font-size: 0.75rem; color: #94a3b8; text-align: center; margin-top: 12px; }
+
+    /* Pillars */
+    .section-pillars { padding: 70px 0; background: var(--gray-50); }
+    .section-title { text-align: center; max-width: 650px; margin: 0 auto 40px; }
+    .section-title h2 { font-size: 2rem; margin-bottom: 10px; }
+    .section-title p { color: var(--gray-600); font-size: 0.98rem; }
+    .pillar-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .pillar-card { background: var(--white); padding: 24px; border-radius: 14px; border: 1px solid #e2e8f0; }
+    .pillar-card h3 { font-size: 1.15rem; margin-bottom: 8px; }
+    .pillar-card p { color: var(--gray-600); font-size: 0.88rem; }
+
+    /* Roadmap */
+    .section-roadmap { padding: 70px 0; }
+    .roadmap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .roadmap-card { border: 1px solid #e2e8f0; border-left: 4px solid var(--primary); padding: 20px 22px; border-radius: 10px; background: var(--white); }
+    .roadmap-card .week { font-size: 0.75rem; font-weight: 700; color: var(--primary-dark); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px; }
+    .roadmap-card h4 { font-size: 1rem; margin-bottom: 6px; }
+    .roadmap-card p { font-size: 0.84rem; color: var(--gray-600); }
+
+    /* Quote */
+    .quote-strip { background: var(--primary-dark); color: #fff; padding: 44px 0; }
+    .quote-strip .container { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 10px; }
+    .quote-strip .quote-text { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 1.4rem; font-weight: 700; max-width: 760px; }
+    .quote-strip .quote-sub { font-size: 0.9rem; opacity: 0.85; }
+
+    /* FAQ */
+    .section-faq { padding: 70px 0; background: var(--gray-50); }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    details { background: var(--white); border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 10px; padding: 0 20px; }
+    summary { cursor: pointer; font-weight: 600; font-size: 0.95rem; padding: 15px 0; color: var(--dark); list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: "+"; font-size: 1.2rem; color: var(--primary); }
+    details[open] summary::after { content: "–"; }
+    details p { font-size: 0.88rem; color: var(--gray-600); padding-bottom: 16px; }
+
+    /* Footer */
+    footer { background: var(--dark); color: #cbd5e1; padding: 34px 0; }
+    .footer-grid { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+    footer .brand { color: #fff; }
+    footer p { font-size: 0.82rem; color: #94a3b8; }
+    footer a { color: var(--whatsapp); }
+
+    /* Floating WhatsApp */
+    .wa-float { position: fixed; bottom: 22px; right: 22px; z-index: 60; width: 56px; height: 56px; border-radius: 50%; background: var(--whatsapp); color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 18px rgba(37, 211, 102, 0.35); text-decoration: none; transition: transform 0.2s; }
+    .wa-float:hover { transform: translateY(-3px); background: var(--whatsapp-dark); }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid, .pillar-grid, .roadmap-grid, .stats-row { grid-template-columns: 1fr; }
+      .hero-content h1 { font-size: 2.05rem; }
+      .pillar-grid, .roadmap-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .pillar-grid, .roadmap-grid { grid-template-columns: 1fr; }
+      .header-right .badge-pill { display: none; }
+      .brand { font-size: 1.15rem; }
+      .stats-row { gap: 14px; }
+      .wa-float { width: 50px; height: 50px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrap">
+      <a href="#top" class="brand">Empower<span>Med</span></a>
+      <div class="header-right">
+        <span class="badge-pill">Madagascar Cohort 1</span>
+        <a class="btn-whatsapp-sm" href="#leadForm">Join WhatsApp Group</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="hero-kicker">45-Day Global Healthcare SDR Accelerator</span>
+        <h1>Break into global healthcare sales, without leaving Madagascar</h1>
+        <p class="subtitle">
+          Train for remote healthcare roles in client communication, lead qualification, and clinic operations.
+          Finish with interview-ready English and a direct line to international clinics and telehealth providers
+          paying <strong>1,800,000 to 3,500,000 MGA/month</strong>.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn-primary-lg" href="#leadForm">Get the Free Orientation Session &rarr;</a>
+          <span class="muted-note">Cohort 1. Limited seats.</span>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-item">
+            <h4>45 Days</h4>
+            <p>1:1 mentorship &amp; live roleplay</p>
+          </div>
+          <div class="stat-item">
+            <h4>130,000 MGA</h4>
+            <p>Early bird seat, orientation included</p>
+          </div>
+          <div class="stat-item">
+            <h4>Remote First</h4>
+            <p>Built for international contracts</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lead Capture Form -->
+      <div class="form-card" id="leadForm">
+        <span class="form-badge">Free Orientation Session</span>
+        <h3>Reserve Your Seat</h3>
+        <p class="form-desc">Submit your details to get the curriculum and join the private WhatsApp group. Your seat stays confirmed after you register.</p>
+
+        <form id="leadFormEl" novalidate>
+          <div class="form-group">
+            <label for="fullName">Full Name</label>
+            <input type="text" id="fullName" name="fullName" placeholder="e.g. Jean Rakoto" autocomplete="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="e.g. jean@gmail.com" autocomplete="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">WhatsApp Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="+261 32 12 345 67" autocomplete="tel" inputmode="tel" required>
+          </div>
+
+          <div class="form-group">
+            <label for="englishLevel">English Proficiency</label>
+            <select id="englishLevel" name="englishLevel" required>
+              <option value="" disabled selected>Select level</option>
+              <option value="beginner">Beginner</option>
+              <option value="intermediate">Intermediate (can read &amp; hold conversation)</option>
+              <option value="fluent">Fluent / Advanced</option>
+            </select>
+          </div>
+
+          <input type="text" class="hp-field" id="website" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <button type="submit" class="btn-submit" id="submitBtn">
+            Join Official WhatsApp Channel &rarr;
+          </button>
+
+          <p class="privacy-notice">Your details go straight to our sheet. We only use them to send you the orientation invite.</p>
+          <div class="form-msg" id="formMsg" role="alert"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pillars Section -->
+  <section class="section-pillars">
+    <div class="container">
+      <div class="section-title">
+        <h2>What We Train You For</h2>
+        <p>Skills designed to land contracts with international private clinics and telehealth providers.</p>
+      </div>
+
+      <div class="pillar-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon">&#127961;&#65039;</div>
+          <h3>Healthcare SDR Skills</h3>
+          <p>Clinic triage, booking patient consultations, and understanding medical workflows with HIPAA data ethics.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">&#128483;&#65039;</div>
+          <h3>Business English &amp; Polish</h3>
+          <p>Moving from conversational English to clear, professional client communication for North American and European teams.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon">&#127919;</div>
+          <h3>1:1 Coaching &amp; Roleplays</h3>
+          <p>Overcoming gatekeepers, handling objections with empathy, and live call audits with senior mentors.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Roadmap Section -->
+  <section class="section-roadmap">
+    <div class="container">
+      <div class="section-title">
+        <h2>Your 45-Day Roadmap</h2>
+        <p>A weekly structure that moves you from zero to interview-ready.</p>
+      </div>
+
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <div class="week">Week 1 to 2</div>
+          <h4>Foundations</h4>
+          <p>Clinic workflows, patient journeys, and the vocabulary doctors and front desks actually use.</p>
+        </div>
+        <div class="roadmap-card">
+          <div class="week">Week 3 to 4</div>
+          <h4>Sales &amp; English Practice</h4>
+          <p>Lead qualification scripts, objection handling, and daily speaking drills with mentors.</p>
+        </div>
+        <div class="roadmap-card">
+          <div class="week">Week 5 to 6</div>
+          <h4>Placement Prep</h4>
+          <p>Audio resume, mock interviews, and introductions matched to real international clinic roles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote Strip -->
+  <section class="quote-strip">
+    <div class="container">
+      <p class="quote-text">"Most global clinics are hiring remote staff right now. The gap is people who can speak their language and run their process."</p>
+      <p class="quote-sub">The EmpowerMed approach: qualify, communicate, operate. Then you are hireable anywhere.</p>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="section-faq" id="faq">
+    <div class="container">
+      <div class="section-title">
+        <h2>Common Questions</h2>
+        <p>Everything you want to know before you register.</p>
+      </div>
+
+      <div class="faq-list">
+        <details>
+          <summary>I am not fluent in English. Can I still join?</summary>
+          <p>Yes. The first weeks are built to raise your professional English from intermediate to working level. We assess your level in the orientation and split training accordingly.</p>
+        </details>
+        <details>
+          <summary>Do I need healthcare experience?</summary>
+          <p>No. You need discipline and a working smartphone or laptop. Healthcare workflow knowledge is trained from zero.</p>
+        </details>
+        <details>
+          <summary>Is the salary figure realistic for Madagascar?</summary>
+          <p>That is the range remote clinics commonly pay for qualified SDR and operations staff. Your final rate depends on your English level, skills, and the employer.</p>
+        </details>
+        <details>
+          <summary>Are these remote jobs?</summary>
+          <p>Yes. The program trains you for remote roles with international clinics and telehealth providers. You work from home.</p>
+        </details>
+        <details>
+          <summary>What happens after I register?</summary>
+          <p>You receive the curriculum, join the private WhatsApp group, and get an invite to the live orientation session where we cover the program and confirm your seat.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="brand">Empower<span>Med</span></div>
+        <p>Madagascar Cohort 1. For questions, message us on <a href="https://chat.whatsapp.com/KxCrHvtWBZD6r1wCIhyxsl" target="_blank" rel="noopener">WhatsApp</a>.</p>
+      </div>
+      <p>&copy; <span id="year"></span> EmpowerMed. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <a class="wa-float" href="#leadForm" aria-label="Join the WhatsApp group">
+    <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </a>
+
+  <script>
+    const CONFIG = {
+      whatsappUrl: "https://chat.whatsapp.com/KxCrHvtWBZD6r1wCIhyxsl",
+      sheetsUrl: "" /* Paste your deployed Google Apps Script URL here. Leave empty to skip saving. */
+    };
+
+    const formEl = document.getElementById("leadFormEl");
+    const submitBtn = document.getElementById("submitBtn");
+    const formMsg = document.getElementById("formMsg");
+
+    function setButton(label, disabled) {
+      submitBtn.disabled = disabled;
+      submitBtn.innerHTML = label;
+    }
+
+    function showError(message) {
+      formMsg.textContent = message;
+      formMsg.className = "form-msg error";
+    }
+
+    async function saveLead(payload) {
+      if (!CONFIG.sheetsUrl) return true; /* No endpoint configured, still redirect. */
+      const res = await fetch(CONFIG.sheetsUrl, {
+        method: "POST",
+        mode: "cors",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error("save failed");
+      return true;
+    }
+
+    async function handleFormSubmit(e) {
+      e.preventDefault();
+
+      if (document.getElementById("website").value) return; /* Honeypot: bot. */
+
+      const payload = {
+        timestamp: new Date().toISOString(),
+        fullName: formEl.fullName.value.trim(),
+        email: formEl.email.value.trim(),
+        phone: formEl.phone.value.trim(),
+        englishLevel: formEl.englishLevel.value,
+        source: "empowermed-landing"
+      };
+
+      formMsg.className = "form-msg";
+      setButton('<span>Redirecting to WhatsApp...</span>', true);
+
+      try {
+        await saveLead(payload);
+        setTimeout(() => { window.location.href = CONFIG.whatsappUrl; }, 400);
+      } catch (err) {
+        setButton('Join Official WhatsApp Channel &rarr;', false);
+        showError("We could not save your details. Please check your connection and try again.");
+        submitBtn.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+
+    formEl.addEventListener("submit", handleFormSubmit);
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
