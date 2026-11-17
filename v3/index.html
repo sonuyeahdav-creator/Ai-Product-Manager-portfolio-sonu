@@ -8,23 +8,24 @@
   <meta name="keywords" content="AI Product Manager, Product Marketing Manager, Agentic AI, RAG, n8n, GTM, performance marketing, Delhi, remote">
   <meta name="author" content="Sonu Yadav">
   <meta name="theme-color" content="#ffffff">
-  <link rel="canonical" href="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/v3/">
+  <link rel="canonical" href="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
   <style>
     :root {
       --bg: #ffffff;
-      --bg-alt: #f5f7fa;
+      --bg-alt: #f7f5f2;
       --surface: #ffffff;
-      --border: #e6e9ef;
-      --text: #0f172a;
-      --muted: #5b6475;
-      --accent: #1d4ed8;
-      --accent-soft: #eef2ff;
+      --border: #e8e4dd;
+      --text: #1a1a2e;
+      --muted: #5b5b6e;
+      --accent: #1a1a2e;
+      --accent-warm: #b45309;
+      --accent-soft: #f5f0e8;
       --success: #0f766e;
       --radius: 12px;
-      --shadow: 0 2px 12px rgba(15,23,42,0.05);
+      --shadow: 0 2px 12px rgba(26,26,46,0.06);
       --maxw: 1080px;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -34,13 +35,13 @@
       background: var(--bg); color: var(--text); line-height: 1.65;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: var(--accent); text-decoration: none; }
+    a { color: var(--accent-warm); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
 
     /* Nav */
     nav {
-      position: sticky; top: 0; background: rgba(255,255,255,0.92);
+      position: sticky; top: 0; background: rgba(255,255,255,0.94);
       backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 50;
     }
     .nav-inner {
@@ -48,37 +49,41 @@
       display: flex; align-items: center; justify-content: space-between;
     }
     .brand { font-weight: 800; font-size: 17px; color: var(--text); letter-spacing: -0.3px; }
-    .brand span { color: var(--accent); }
+    .brand span { color: var(--accent-warm); }
     .nav-links { display: flex; gap: 26px; align-items: center; }
     .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; }
-    .nav-links a:hover { color: var(--accent); text-decoration: none; }
+    .nav-links a:hover { color: var(--accent-warm); text-decoration: none; }
     .nav-cta {
-      padding: 9px 18px; background: linear-gradient(120deg, #1d4ed8, #7c3aed, #1d4ed8);
+      padding: 9px 18px; background: linear-gradient(120deg, #1a1a2e, #b45309, #1a1a2e);
       background-size: 200% 100%; color: #fff; border-radius: 9px; border: none;
       font-size: 14px; font-weight: 700; position: relative; overflow: hidden;
-      box-shadow: 0 4px 14px rgba(29,78,216,0.35);
+      box-shadow: 0 4px 14px rgba(26,26,46,0.25);
       animation: navCtaGlow 3s ease-in-out infinite;
     }
     .nav-cta:hover { filter: brightness(1.12); color: #fff; text-decoration: none; animation-duration: 1s; }
-    @keyframes navCtaGlow { 0% { background-position: 0% 50%; box-shadow: 0 4px 14px rgba(29,78,216,0.35); } 50% { background-position: 100% 50%; box-shadow: 0 6px 20px rgba(124,58,237,0.45); } 100% { background-position: 0% 50%; box-shadow: 0 4px 14px rgba(29,78,216,0.35); } }
+    @keyframes navCtaGlow { 0% { background-position: 0% 50%; box-shadow: 0 4px 14px rgba(26,26,46,0.25); } 50% { background-position: 100% 50%; box-shadow: 0 6px 20px rgba(180,83,9,0.35); } 100% { background-position: 0% 50%; box-shadow: 0 4px 14px rgba(26,26,46,0.25); } }
 
     /* Hero */
     .hero { padding: 72px 0 56px; border-bottom: 1px solid var(--border); }
     .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .hero-text .eyebrow {
       font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
-      color: var(--accent); font-weight: 700; margin-bottom: 14px;
+      color: var(--accent-warm); font-weight: 700; margin-bottom: 14px;
     }
     .hero-text h1 {
       font-family: 'Fraunces', Georgia, serif; font-size: clamp(36px, 5vw, 56px);
       font-weight: 700; letter-spacing: -1.5px; line-height: 1.05; margin-bottom: 16px;
     }
     .hero-text .role {
-      font-size: 19px; color: var(--muted); font-weight: 500; margin-bottom: 24px;
-      max-width: 520px;
+      font-family: 'Fraunces', Georgia, serif; font-size: clamp(18px, 2.5vw, 24px);
+      color: var(--accent-warm); font-weight: 500; margin-bottom: 20px;
+      max-width: 520px; line-height: 1.3;
     }
     .hero-text .summary {
-      font-size: 16px; color: var(--muted); max-width: 540px; margin-bottom: 32px;
+      font-size: 16px; color: var(--muted); max-width: 540px; margin-bottom: 12px;
+    }
+    .hero-text .currently {
+      font-size: 13px; color: var(--muted); margin-bottom: 32px; font-style: italic;
     }
     .hero-text .hero-links { display: flex; gap: 12px; flex-wrap: wrap; }
     .btn {
@@ -87,13 +92,22 @@
       border: 1px solid var(--border); color: var(--text); background: var(--surface);
       transition: all .2s;
     }
-    .btn:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .btn:hover { border-color: var(--accent-warm); color: var(--accent-warm); text-decoration: none; transform: translateY(-1px); }
     .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .btn.primary:hover { filter: brightness(1.08); color: #fff; }
+    .btn.primary:hover { filter: brightness(1.1); color: #fff; }
+    .btn.resume {
+      background: linear-gradient(120deg, #1a1a2e, #b45309, #1a1a2e);
+      background-size: 200% 100%; color: #fff; border-color: transparent;
+      animation: resumeShimmer 3.5s ease-in-out infinite;
+      box-shadow: 0 4px 14px rgba(26,26,46,0.2);
+    }
+    .btn.resume:hover { filter: brightness(1.1); animation-duration: 1.2s; text-decoration: none; }
+    @keyframes resumeShimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    .btn.resume svg { vertical-align: middle; margin-right: 4px; }
     .hero-photo {
       width: 100%; max-width: 360px; aspect-ratio: 1/1; margin-left: auto;
-      border-radius: 16px; overflow: hidden; border: 1px solid var(--border);
-      box-shadow: var(--shadow);
+      border-radius: 14px; overflow: hidden; border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(26,26,46,0.08);
     }
     .hero-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -101,7 +115,7 @@
     section { padding: 64px 0; border-bottom: 1px solid var(--border); }
     .section-label {
       font-size: 12px; text-transform: uppercase; letter-spacing: 2px;
-      color: var(--accent); font-weight: 700; margin-bottom: 8px;
+      color: var(--accent-warm); font-weight: 700; margin-bottom: 8px;
     }
     section h2 {
       font-family: 'Fraunces', Georgia, serif; font-size: clamp(26px, 3.5vw, 34px);
@@ -123,14 +137,14 @@
     .tl-item { padding-left: 28px; border-left: 2px solid var(--border); position: relative; }
     .tl-item::before {
       content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px;
-      border-radius: 50%; background: var(--accent); border: 2px solid #fff;
+      border-radius: 50%; background: var(--accent-warm); border: 2px solid #fff;
     }
     .tl-item h3 { font-size: 19px; font-weight: 700; margin-bottom: 2px; }
-    .tl-item .role-sub { color: var(--accent); font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+    .tl-item .role-sub { color: var(--accent-warm); font-weight: 600; font-size: 14px; margin-bottom: 2px; }
     .tl-item .date { color: var(--muted); font-size: 13px; margin-bottom: 12px; font-family: 'Inter', monospace; }
     .tl-item ul { list-style: none; display: flex; flex-direction: column; gap: 6px; }
     .tl-item ul li { position: relative; padding-left: 18px; color: var(--muted); font-size: 15px; }
-    .tl-item ul li::before { content: "›"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+    .tl-item ul li::before { content: "›"; position: absolute; left: 0; color: var(--accent-warm); font-weight: 700; }
 
     /* Education */
     .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
@@ -139,7 +153,7 @@
       padding: 24px; box-shadow: var(--shadow);
     }
     .edu-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 4px; }
-    .edu-card .inst { color: var(--accent); font-weight: 600; font-size: 14px; margin-bottom: 8px; }
+    .edu-card .inst { color: var(--accent-warm); font-weight: 600; font-size: 14px; margin-bottom: 8px; }
     .edu-card p { color: var(--muted); font-size: 14px; }
 
     /* Skills tags */
@@ -147,9 +161,11 @@
     .tag {
       padding: 7px 14px; background: var(--accent-soft); border: 1px solid var(--border);
       border-radius: 100px; font-size: 13px; font-weight: 500; color: var(--text);
+      transition: all .2s;
     }
+    .tag:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
     .tag-group { margin-bottom: 24px; }
-    .tag-group h4 { font-size: 14px; font-weight: 700; color: var(--accent); margin-bottom: 12px; }
+    .tag-group h4 { font-size: 14px; font-weight: 700; color: var(--accent-warm); margin-bottom: 12px; }
 
     /* Milestones */
     .milestones { display: flex; flex-direction: column; gap: 14px; }
@@ -157,25 +173,75 @@
       display: flex; gap: 14px; align-items: flex-start; padding: 16px 20px;
       background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius);
     }
-    .milestone .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); margin-top: 8px; flex-shrink: 0; }
+    .milestone .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-warm); margin-top: 8px; flex-shrink: 0; }
     .milestone p { color: var(--muted); font-size: 15px; }
     .milestone p b { color: var(--text); }
+
+    /* How I think */
+    .principles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .principle {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 28px; box-shadow: var(--shadow);
+    }
+    .principle .num { font-family: 'Fraunces', Georgia, serif; font-size: 32px; font-weight: 700; color: var(--accent-warm); margin-bottom: 8px; }
+    .principle h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .principle p { color: var(--muted); font-size: 14px; }
+
+    /* Growth metrics strip */
+    .metrics-strip {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+      background: var(--border); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .metric {
+      background: var(--surface); padding: 24px 20px; text-align: center;
+    }
+    .metric .number { font-family: 'Fraunces', Georgia, serif; font-size: 28px; font-weight: 700; color: var(--accent); letter-spacing: -0.5px; }
+    .metric .label { font-size: 12px; color: var(--muted); margin-top: 4px; line-height: 1.4; }
+
+    /* Case studies */
+    .case-grid { display: flex; flex-direction: column; gap: 20px; }
+    .case-card {
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 32px; box-shadow: var(--shadow);
+    }
+    .case-card .case-tag {
+      display: inline-block; padding: 4px 12px; background: var(--accent-soft);
+      border: 1px solid var(--border); border-radius: 100px; font-size: 12px;
+      font-weight: 600; color: var(--accent-warm); margin-bottom: 12px;
+    }
+    .case-card h3 { font-size: 20px; font-weight: 700; margin-bottom: 12px; }
+    .case-card .case-row { display: flex; gap: 12px; margin-bottom: 8px; }
+    .case-card .case-label { font-size: 12px; font-weight: 700; color: var(--accent-warm); text-transform: uppercase; letter-spacing: 1px; min-width: 72px; padding-top: 2px; }
+    .case-card .case-text { color: var(--muted); font-size: 14px; flex: 1; }
+    .case-card .case-links { margin-top: 16px; display: flex; gap: 16px; }
+    .case-card .case-links a { font-size: 14px; font-weight: 600; }
 
     /* Services */
     .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
     .service-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 26px; box-shadow: var(--shadow); display: flex; flex-direction: column;
+      transition: all .25s;
     }
+    .service-card:hover { transform: translateY(-3px); border-color: var(--accent-warm); }
     .service-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
     .service-card p { color: var(--muted); font-size: 14px; margin-bottom: 16px; flex: 1; }
-    .service-cta a { font-size: 14px; font-weight: 600; }
+    .service-btn {
+      display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px;
+      background: var(--accent); color: #fff; border-radius: 8px; font-size: 13px;
+      font-weight: 600; align-self: flex-start; transition: all .2s;
+    }
+    .service-btn:hover { background: var(--accent-warm); color: #fff; text-decoration: none; transform: translateX(2px); }
+    .service-btn .arrow { transition: transform .2s; }
+    .service-btn:hover .arrow { transform: translateX(3px); }
 
     /* Contact */
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
     .contact-info p { color: var(--muted); font-size: 15px; margin-bottom: 12px; }
     .contact-links { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
     .contact-links a { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 500; }
+    .contact-links a:hover { color: var(--accent-warm); }
     .contact-form { display: flex; flex-direction: column; gap: 12px; }
     .contact-form input, .contact-form textarea {
       padding: 12px 14px; border: 1px solid var(--border); border-radius: 9px;
@@ -185,16 +251,16 @@
     .contact-form button {
       padding: 12px 20px; background: var(--accent); color: #fff; border: none;
       border-radius: 9px; font-weight: 600; font-size: 14px; cursor: pointer;
-      align-self: flex-start;
+      align-self: flex-start; transition: all .2s;
     }
-    .contact-form button:hover { filter: brightness(1.08); }
+    .contact-form button:hover { background: var(--accent-warm); }
 
     footer {
       padding: 32px 0 48px; text-align: center; color: var(--muted); font-size: 13px;
     }
     footer .foot-links { display: flex; gap: 22px; justify-content: center; margin-bottom: 14px; flex-wrap: wrap; }
-    footer .foot-links a { color: var(--muted); font-size: 13px; }
-    footer .foot-links a:hover { color: var(--accent); }
+    footer .foot-links a { color: var(--muted); font-size: 13px; transition: color .2s; }
+    footer .foot-links a:hover { color: var(--accent-warm); text-decoration: none; }
 
     /* Reveal */
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .6s ease, transform .6s ease; }
@@ -205,6 +271,8 @@
       .hero-photo { max-width: 260px; margin: 0 auto; }
       .edu-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
+      .principles { grid-template-columns: 1fr; }
+      .metrics-strip { grid-template-columns: repeat(2, 1fr); }
       .contact-grid { grid-template-columns: 1fr; }
       .nav-links { gap: 14px; }
       .nav-links a { font-size: 13px; }
@@ -213,28 +281,20 @@
       * { animation: none !important; transition: none !important; }
       .reveal { opacity: 1 !important; transform: none !important; }
     }
-      .btn.resume {
-      background: linear-gradient(120deg, #1d4ed8, #7c3aed, #1d4ed8);
-      background-size: 200% 100%;
-      color: #fff; border-color: transparent;
-      animation: resumeShimmer 3.5s ease-in-out infinite;
-      box-shadow: 0 4px 14px rgba(29,78,216,0.25);
-    }
-    .btn.resume:hover { filter: brightness(1.1); animation-duration: 1.2s; text-decoration: none; }
-    @keyframes resumeShimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+    /* focus states */
+    a:focus, button:focus, input:focus, textarea:focus { outline: 2px solid var(--accent-warm); outline-offset: 2px; }
   </style>
 </head>
 <body>
   <nav>
     <div class="nav-inner">
-      <a class="brand" href="#top">Sonu Yadav</a>
+      <a class="brand" href="#top">Sonu<span>.</span>Yadav</a>
       <div class="nav-links">
         <a href="#about">About</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
-        <a href="#milestones">Milestones</a>
         <a href="#services">Services</a>
-        <a href="#contact" class="nav-cta">Get in touch</a>
+        <a href="#contact" class="nav-cta" aria-label="Get in touch">Get in touch</a>
       </div>
     </div>
   </nav>
@@ -244,15 +304,16 @@
     <header class="hero">
       <div class="container hero-inner">
         <div class="hero-text">
-          <div class="eyebrow">AI Product Manager · Product Marketing</div>
+          <div class="eyebrow">AI Product Manager · Product Marketing · GTM</div>
           <h1>Sonu Yadav</h1>
-          <p class="role">AI Product Manager who ships agentic AI and knows how to sell it. Built HIREin, 1st place out of 60 teams at IIT Patna. Open to remote roles worldwide.</p>
-          <p class="summary">Based in Delhi, India. I build agentic AI that does real work, then position it so customers, clients, and leadership actually care. Open to full-time, contract, and advisory work.</p>
+          <p class="role">AI Product Manager who ships agentic AI and knows how to sell it.</p>
+          <p class="summary">I build agentic AI that does real work, then position it so customers, clients, and leadership actually care. Most AI people can build or sell. I have done both.</p>
+          <p class="currently">Currently: Segment/Product Manager at OmKiran · Open to remote AI PM/PMM roles worldwide.</p>
           <div class="hero-links">
+            <a class="btn resume" href="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/resume/Sonu_Yadav_Resume.pdf" target="_blank" rel="noopener" aria-label="Download resume"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Resume</a>
             <a class="btn primary" href="mailto:sonuyeahdav@gmail.com">Email me</a>
             <a class="btn" href="https://www.linkedin.com/in/sonu-yadav-l/" target="_blank" rel="noopener">LinkedIn</a>
             <a class="btn" href="#services">Services</a>
-            <a class="btn resume" href="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/resume/Sonu_Yadav_Resume.pdf" target="_blank" rel="noopener"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-right:4px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Resume</a>
           </div>
         </div>
         <div class="hero-photo">
@@ -270,6 +331,59 @@
           <p>I build <b>agentic AI that does real work</b>, then help teams ship it. I designed HIREin, a dual-agent recruitment engine using Gemini Flash, n8n, and Supabase, and took 1st place out of 60 teams at an IIT Patna hackathon, pitching to senior PMs from Google Maps and Microsoft.</p>
           <p>Before AI, I ran <b>SEO and paid acquisition</b> and worked in <b>PR and reputation strategy</b>. Most AI people can build or sell. I have done both, and I am comfortable in either seat.</p>
           <p>Based in Delhi, India. Open to remote AI Product Manager, Product Marketing, and AI solutions roles, plus contract and advisory work.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW I THINK -->
+    <section id="principles">
+      <div class="container">
+        <div class="section-label">Approach</div>
+        <h2>How I think</h2>
+        <p class="section-lead">Three principles I apply to every product, AI or not.</p>
+        <div class="principles">
+          <div class="principle">
+            <div class="num">01</div>
+            <h3>Guardrails before scale</h3>
+            <p>Split HIREin into two isolated agents and hit 100% JSON reliability. Reliability is a design decision, not a model upgrade.</p>
+          </div>
+          <div class="principle">
+            <div class="num">02</div>
+            <h3>Sell what you ship</h3>
+            <p>An AI feature nobody understands is a feature nobody uses. I build the positioning and messaging alongside the product.</p>
+          </div>
+          <div class="principle">
+            <div class="num">03</div>
+            <h3>Metrics over motion</h3>
+            <p>Footfall, revenue, CAC, ROI. I measure outcomes, not activity. If it does not move a number, it does not ship.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GROWTH METRICS -->
+    <section id="growth">
+      <div class="container">
+        <div class="section-label">Growth & GTM</div>
+        <h2>Numbers I have moved</h2>
+        <p class="section-lead">Proof from marketing, real estate, and AI work.</p>
+        <div class="metrics-strip">
+          <div class="metric">
+            <div class="number">1st / 60</div>
+            <div class="label">Hackathon, pitched to Google Maps & Microsoft PMs</div>
+          </div>
+          <div class="metric">
+            <div class="number">100%</div>
+            <div class="label">JSON parsing reliability, split-context design</div>
+          </div>
+          <div class="metric">
+            <div class="number">8 mo</div>
+            <div class="label">Vacant space to profitable, OmKiran turnaround</div>
+          </div>
+          <div class="metric">
+            <div class="number">3</div>
+            <div class="label">Vacant commercial spaces converted to revenue</div>
+          </div>
         </div>
       </div>
     </section>
@@ -386,24 +500,28 @@
       </div>
     </section>
 
-    <!-- PROJECTS (compact) -->
+    <!-- CASE STUDIES -->
     <section id="projects">
       <div class="container">
         <div class="section-label">Selected work</div>
-        <h2>Projects</h2>
-        <p class="section-lead">A few things I have built.</p>
-        <div class="milestones">
-          <div class="milestone">
-            <span class="dot"></span>
-            <div>
-              <p><b>HIREin</b> — a recruitment engine that turns raw applications into scored candidates with confirmed interview invites, end to end. Split parsing and scoring into two isolated agents to stop hallucinated output. <a href="https://sonu-yadav-wfz-lovable-projects.lovable.app/" target="_blank" rel="noopener">Live demo →</a></p>
-            </div>
+        <h2>Case studies</h2>
+        <p class="section-lead">A few things I have built, told as stories.</p>
+        <div class="case-grid">
+          <div class="case-card">
+            <span class="case-tag">AI / Automation</span>
+            <h3>HIREin</h3>
+            <div class="case-row"><span class="case-label">Problem</span><span class="case-text">Recruitment teams drown in resumes. Parsing and scoring in one LLM call caused hallucinated output and broken JSON.</span></div>
+            <div class="case-row"><span class="case-label">Action</span><span class="case-text">Split parsing and scoring into two isolated agents with custom repair routines. Built on Gemini Flash, n8n, Supabase, Lovable.</span></div>
+            <div class="case-row"><span class="case-label">Result</span><span class="case-text">100% JSON parsing reliability. 1st place out of 60 teams at IIT Patna. Pitched to senior PMs from Google Maps and Microsoft.</span></div>
+            <div class="case-links"><a href="https://sonu-yadav-wfz-lovable-projects.lovable.app/" target="_blank" rel="noopener">Live demo →</a></div>
           </div>
-          <div class="milestone">
-            <span class="dot"></span>
-            <div>
-              <p><b>RAG agents for leasing and operations</b> — architected and deployed at OmKiran to automate leasing and operations, so the team could respond faster and step away from manual work.</p>
-            </div>
+          <div class="case-card">
+            <span class="case-tag">AI / GTM</span>
+            <h3>RAG agents for leasing and operations</h3>
+            <div class="case-row"><span class="case-label">Problem</span><span class="case-text">Leasing and operations at OmKiran were manual, slow, and resource-heavy. Vacant commercial spaces generated no revenue.</span></div>
+            <div class="case-row"><span class="case-label">Action</span><span class="case-text">Architected and deployed RAG-driven agents to automate leasing and operations. Repositioned vacant spaces for targeted tenants, including a clinic in a healthcare hub.</span></div>
+            <div class="case-row"><span class="case-label">Result</span><span class="case-text">Agents running in production. 3 vacant spaces converted to revenue-generating assets. Profitability within 8 months.</span></div>
+            <div class="case-links"><a href="#experience">Read the story →</a></div>
           </div>
         </div>
       </div>
@@ -419,17 +537,17 @@
           <div class="service-card">
             <h3>AI automation audit</h3>
             <p>I map your recruitment, operations, or marketing workflow and show which steps agentic AI can automate. You get a written list of quick wins with guardrails, in one working session.</p>
-            <div class="service-cta"><a href="mailto:sonuyeahdav@gmail.com?subject=AI%20Automation%20Audit">Book an audit →</a></div>
+            <a class="service-btn" href="mailto:sonuyeahdav@gmail.com?subject=AI%20Automation%20Audit">Book an audit <span class="arrow">→</span></a>
           </div>
           <div class="service-card">
             <h3>Agentic AI build</h3>
             <p>I partner with teams to build AI solutions on real business problems. I design the agent flow, set the guardrails, and ship a working demo you can show users.</p>
-            <div class="service-cta"><a href="mailto:sonuyeahdav@gmail.com?subject=Build%20Partnership">Start a build →</a></div>
+            <a class="service-btn" href="mailto:sonuyeahdav@gmail.com?subject=Build%20Partnership">Start a build <span class="arrow">→</span></a>
           </div>
           <div class="service-card">
             <h3>AI PM + go-to-market</h3>
             <p>I help teams launch AI features that land. I align the technical work with a business goal, then build the positioning and messaging. Full-funnel, from someone who shipped and sold.</p>
-            <div class="service-cta"><a href="mailto:sonuyeahdav@gmail.com?subject=Go%20to%20Market">Talk strategy →</a></div>
+            <a class="service-btn" href="mailto:sonuyeahdav@gmail.com?subject=Go%20to%20Market">Talk strategy <span class="arrow">→</span></a>
           </div>
         </div>
       </div>
@@ -450,6 +568,7 @@
               <a href="tel:+919958388301">📞 +91 99583 88301</a>
               <a href="https://www.linkedin.com/in/sonu-yadav-l/" target="_blank" rel="noopener">LinkedIn</a>
               <a href="https://github.com/sonuyeahdav-creator" target="_blank" rel="noopener">⌥ GitHub</a>
+              <a href="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/resume/Sonu_Yadav_Resume.pdf" target="_blank" rel="noopener">📄 Resume (PDF)</a>
             </div>
           </div>
           <form class="contact-form" onsubmit="event.preventDefault(); window.location.href='mailto:sonuyeahdav@gmail.com?subject=' + encodeURIComponent(this.subject.value) + '&body=' + encodeURIComponent(this.message.value); return false;">
@@ -468,6 +587,7 @@
         <a href="mailto:sonuyeahdav@gmail.com">Email</a>
         <a href="https://www.linkedin.com/in/sonu-yadav-l/" target="_blank" rel="noopener">LinkedIn</a>
         <a href="https://github.com/sonuyeahdav-creator" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/resume/Sonu_Yadav_Resume.pdf" target="_blank" rel="noopener">Resume</a>
       </div>
       <p>© 2026 Sonu Yadav. Built by hand.</p>
     </div>
@@ -475,7 +595,7 @@
 
   <script>
     (function () {
-      var revealEls = document.querySelectorAll('.reveal, section, .hero, .milestone, .edu-card, .service-card, .tl-item');
+      var revealEls = document.querySelectorAll('.reveal, section, .hero, .milestone, .edu-card, .service-card, .tl-item, .principle, .case-card, .metric');
       var io = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
           if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
