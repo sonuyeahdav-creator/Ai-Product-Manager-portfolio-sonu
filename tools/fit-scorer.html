@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Job Fit Scorer | Sonu Yadav</title>
+  <meta name="description" content="Paste a job description and get a fit score, matched keywords, and the gaps worth closing. Runs in your browser. Nothing is uploaded.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/tools/fit-scorer.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff; --bg-alt: #f7f5f2; --surface: #ffffff; --border: #e8e4dd;
+      --text: #1a1a2e; --muted: #5b5b6e; --accent: #1a1a2e; --accent-warm: #b45309;
+      --accent-soft: #f5f0e8; --green: #0f766e; --red: #b91c1c;
+      --radius: 12px; --shadow: 0 2px 12px rgba(26,26,46,0.06); --maxw: 1080px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent-warm); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    nav { position: sticky; top: 0; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 50; }
+    .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-weight: 800; font-size: 17px; color: var(--text); }
+    .nav-links { display: flex; gap: 22px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent-warm); text-decoration: none; }
+
+    header { padding: 44px 0 28px; }
+    .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-warm); font-weight: 700; margin-bottom: 10px; }
+    h1 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(30px, 4.4vw, 42px); font-weight: 700; letter-spacing: -1px; line-height: 1.08; margin-bottom: 10px; }
+    .lead { color: var(--muted); max-width: 660px; font-size: 15px; }
+
+    .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; padding: 12px 0 64px; align-items: start; }
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+    .panel h2 { font-size: 15px; font-weight: 700; margin-bottom: 4px; }
+    .panel .hint { font-size: 12px; color: var(--muted); margin-bottom: 14px; }
+    textarea { width: 100%; min-height: 300px; padding: 14px; border: 1px solid var(--border); border-radius: 9px; font-family: inherit; font-size: 13px; line-height: 1.55; resize: vertical; background: #fff; color: var(--text); }
+    textarea::placeholder { color: #9a9aab; }
+    .row { display: flex; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+    button { font-family: inherit; cursor: pointer; }
+    .btn { padding: 11px 18px; border-radius: 9px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font-size: 14px; font-weight: 600; transition: all .2s; }
+    .btn:hover { border-color: var(--accent-warm); color: var(--accent-warm); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.primary:hover { filter: brightness(1.12); color: #fff; }
+    .btn:disabled { opacity: .45; cursor: not-allowed; }
+    .btn.ghost { font-size: 13px; padding: 9px 14px; }
+
+    .empty { color: var(--muted); font-size: 14px; padding: 28px 4px; text-align: center; }
+    .score-wrap { display: flex; align-items: center; gap: 18px; margin-bottom: 18px; }
+    .dial { --p: 0; width: 96px; height: 96px; border-radius: 50%; flex-shrink: 0; background: conic-gradient(var(--accent-warm) calc(var(--p) * 1%), #eee9e1 0); display: grid; place-items: center; }
+    .dial-in { width: 76px; height: 76px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-family: 'Fraunces', Georgia, serif; font-size: 24px; font-weight: 700; }
+    .verdict { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .verdict-sub { font-size: 13px; color: var(--muted); }
+
+    .bars { display: grid; gap: 9px; margin: 18px 0; }
+    .bar-row { display: grid; grid-template-columns: 116px 1fr 46px; gap: 10px; align-items: center; font-size: 12px; }
+    .bar-row .lbl { color: var(--muted); }
+    .bar-row .track { height: 7px; background: #eee9e1; border-radius: 100px; overflow: hidden; }
+    .bar-row .fill { height: 100%; background: var(--accent); border-radius: 100px; transition: width .5s ease; }
+    .bar-row .num { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 6px; }
+    .chip { font-size: 12px; padding: 4px 10px; border-radius: 100px; border: 1px solid var(--border); background: var(--bg-alt); color: var(--muted); }
+    .chip.ok { background: #f0fdfa; border-color: #99f6e4; color: var(--green); }
+    .chip.gap { background: #fef2f2; border-color: #fecaca; color: var(--red); }
+    h3.block { font-size: 12px; text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent-warm); font-weight: 700; margin: 18px 0 10px; }
+    .proof { border-left: 2px solid var(--accent-warm); padding: 4px 0 4px 12px; font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+    .proof b { color: var(--text); }
+    .note { font-size: 12px; color: var(--muted); background: var(--accent-soft); border-radius: 8px; padding: 10px 12px; margin-top: 14px; }
+    .note b { color: var(--text); }
+    footer { padding: 24px 0 42px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
+    footer a { color: var(--muted); }
+    footer a:hover { color: var(--accent-warm); }
+
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; }
+      textarea { min-height: 220px; }
+      .bar-row { grid-template-columns: 96px 1fr 42px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+    a:focus, button:focus, textarea:focus, input:focus { outline: 2px solid var(--accent-warm); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="../">Sonu Yadav</a>
+      <div class="nav-links">
+        <a href="index.html">All tools</a>
+        <a href="../#contact">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="container">
+    <div class="eyebrow">Free tool</div>
+    <h1>Score a job before you spend an evening on it</h1>
+    <p class="lead">Paste the job description. You get a fit score, the keywords you already match, and the gaps worth closing. Everything runs in this browser tab. Nothing is sent anywhere.</p>
+  </header>
+
+  <div class="container layout">
+    <div class="panel">
+      <h2>Job description</h2>
+      <p class="hint">Paste the full text, including requirements. More text means a better read.</p>
+      <textarea id="jd" aria-label="Job description" placeholder="Paste the job description here..."></textarea>
+      <div class="row">
+        <button class="btn primary" id="scoreBtn">Score this job</button>
+        <button class="btn ghost" id="sampleBtn">Load a sample</button>
+        <button class="btn ghost" id="clearBtn">Clear</button>
+      </div>
+    </div>
+
+    <div class="panel" id="result" aria-live="polite">
+      <div class="empty">Your result will appear here.<br>No data leaves this page.</div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <a href="../">Portfolio</a> · <a href="index.html">Tools</a> · <a href="../resume/Sonu_Yadav_Resume.pdf">Resume</a>
+      <p style="margin-top:8px">© 2026 Sonu Yadav. Scores are a heuristic, not a promise.</p>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    "use strict";
+
+    // Facts below come from the resume. Nothing here is invented.
+    var PROFILE = {
+      years: 5,
+      roles: ["product manager", "product owner", "product marketing", "ai product", "gtm", "growth", "brand consultant", "founder"],
+      tools: ["n8n", "zapier", "supabase", "wordpress", "figma", "canva", "sql", "google analytics", "gemini", "claude", "openai", "lovable", "adobe premiere", "after effects", "jira"],
+      domains: ["ai", "agentic", "real estate", "healthcare", "hr tech", "recruitment", "education", "marketing", "saas", "b2b"]
+    };
+
+    // Capability families Sonu can honestly claim.
+    var FAMILIES = [
+      { id: "pm", label: "Product management", weight: 5, re: /\b(product manager|product owner|product management|roadmap|prd|backlog|agile|scrum|user research|discovery|product strategy)\b/ },
+      { id: "agentic", label: "Agentic AI", weight: 5, re: /\b(agentic|ai agent|agents|multi-agent|autonomous agent|llm|large language model|generative ai|genai)\b/ },
+      { id: "rag", label: "RAG and retrieval", weight: 4, re: /\b(rag|retrieval[- ]augmented|vector (db|database|store)|embeddings|semantic search|knowledge base)\b/ },
+      { id: "prompt", label: "Prompt engineering", weight: 3, re: /\b(prompt(ing)? engineering|prompt design|prompt chain|evaluation|evals)\b/ },
+      { id: "automation", label: "Workflow automation", weight: 4, re: /\b(n8n|zapier|make\.com|workflow automation|automation|no-code|low-code|integrations?)\b/ },
+      { id: "gtm", label: "Go-to-market", weight: 5, re: /\b(go[- ]to[- ]market|gtm|positioning|messaging|product launch|launch strategy|pricing|competitive analysis)\b/ },
+      { id: "seo", label: "SEO and SEM", weight: 3, re: /\b(seo|sem|ppc|google ads|paid search|search engine)\b/ },
+      { id: "paid", label: "Paid acquisition", weight: 3, re: /\b(paid (social|media|acquisition)|meta ads|facebook ads|linkedin ads|performance marketing|cac|roas)\b/ },
+      { id: "analytics", label: "Analytics and funnels", weight: 4, re: /\b(analytics|kpis?|funnel|conversion|a\/b test|experimentation|roi|dashboard|metrics)\b/ },
+      { id: "content", label: "Content and brand", weight: 3, re: /\b(content (strategy|marketing|production)|brand (strategy|voice|identity)|storytelling|copywriting|social media|pr\b|communications)\b/ },
+      { id: "stakeholder", label: "Stakeholder management", weight: 3, re: /\b(stakeholder|cross[- ]functional|client management|leadership|executive|collaborat)/ }
+    ];
+
+    // Things JDs ask for that are not on the resume. Reported as gaps, never auto-added.
+    var GAPS = [
+      { id: "crm", label: "Salesforce", weight: 3, re: /\bsalesforce\b/ },
+      { id: "hubspot", label: "HubSpot", weight: 2, re: /\bhubspot\b/ },
+      { id: "marketo", label: "Marketo", weight: 2, re: /\bmarketo\b/ },
+      { id: "amplitude", label: "Amplitude", weight: 2, re: /\bamplitude\b/ },
+      { id: "mixpanel", label: "Mixpanel", weight: 2, re: /\bmixpanel\b/ },
+      { id: "looker", label: "Looker or Tableau", weight: 2, re: /\b(looker|tableau|power bi)\b/ },
+      { id: "python", label: "Python", weight: 3, re: /\bpython\b/ },
+      { id: "langchain", label: "LangChain", weight: 2, re: /\b(langchain|llamaindex|langgraph)\b/ },
+      { id: "llmops", label: "LLM observability", weight: 2, re: /\b(llm ?ops|observability|tracing|langsmith)\b/ },
+      { id: "cloud", label: "Cloud (AWS, GCP, Azure)", weight: 2, re: /\b(aws|gcp|azure|kubernetes|docker)\b/ },
+      { id: "enterprise", label: "Enterprise sales", weight: 3, re: /\b(enterprise sales|abm|account[- ]based|quota|pipeline management)\b/ },
+      { id: "plg", label: "Product led growth", weight: 2, re: /\b(plg|product[- ]led growth|activation rate|retention loops?)\b/ }
+    ];
+
+    var DOMAIN_RULES = [
+      { re: /\b(ai|ml|machine learning|agentic|llm|genai)\b/, score: 21, note: "AI product work is your core." },
+      { re: /\b(real estate|proptech|property|leasing)\b/, score: 21, note: "Direct domain match from OmKiran." },
+      { re: /\b(recruit|hr tech|hiring|talent|staffing)\b/, score: 18, note: "HIREin was built for this problem." },
+      { re: /\b(health|clinic|medical|care)\b/, score: 15, note: "Healthcare tenant and Medbrand context." },
+      { re: /\b(education|edtech|learning|school)\b/, score: 13, note: "Pehchaan and IIT Patna context." },
+      { re: /\b(saas|b2b|startup|platform|marketplace)\b/, score: 12, note: "Adjacent, no direct SaaS tenure." }
+    ];
+
+    var PROOF = [
+      { tags: ["rag", "agentic", "automation", "pm"], text: "<b>HIREin, 1st of 60 teams.</b> Split one unreliable prompt into two agents and hit 100 percent JSON parsing reliability." },
+      { tags: ["rag", "agentic", "analytics"], text: "<b>RAG agents in production.</b> Leasing and ops answers pulled from real documents at OmKiran, used by the team daily." },
+      { tags: ["gtm", "content", "paid"], text: "<b>Vacant space to revenue.</b> Three commercial spaces leased through repositioning, profitable in 8 months." },
+      { tags: ["seo", "paid", "analytics"], text: "<b>Full funnel ownership.</b> SEO, SEM, and paid social at Canvas Idea, with CAC and ROI reporting." },
+      { tags: ["content", "stakeholder"], text: "<b>In-house journalist.</b> PR, events, and promotional content for a commercial real estate brand." },
+      { tags: ["pm", "stakeholder"], text: "<b>Co-founder at Medbrand.AI.</b> Product, tech, and growth run as one function, with a team that operates without me." }
+    ];
+
+    var SAMPLE = [
+      "AI Product Manager, Growth (Remote, India)",
+      "",
+      "We are hiring an AI Product Manager to own our agentic assistant for B2B customers.",
+      "You will define the roadmap, write PRDs, and work with engineering on RAG pipelines,",
+      "prompt evaluation, and guardrails. Experience with n8n or similar automation tools is a plus.",
+      "",
+      "Requirements:",
+      "- 4+ years in product management, ideally on AI or SaaS products",
+      "- Hands-on with LLMs, RAG, and prompt engineering",
+      "- Strong analytics: define KPIs, run A/B tests, read funnels",
+      "- Go-to-market experience: positioning, launch, and sales enablement",
+      "- Comfortable with LLM observability and evaluation frameworks",
+      "- Python and SQL a plus",
+      "- Experience with HubSpot and lifecycle marketing is nice to have",
+      "",
+      "You will report to the Head of Product and work with a distributed team."
+    ].join("\n");
+
+    function norm(t) { return " " + t.toLowerCase().replace(/\s+/g, " ") + " "; }
+
+    function scoreJD(raw, track) {
+      var text = norm(raw);
+      var matched = [], gaps = [], coreHave = 0, coreAll = 0;
+
+      FAMILIES.forEach(function (f) {
+        if (f.re.test(text)) {
+          coreAll += f.weight;
+          coreHave += f.weight;
+          matched.push(f);
+        }
+      });
+      GAPS.forEach(function (g) {
+        if (g.re.test(text)) {
+          coreAll += g.weight;
+          gaps.push(g);
+        }
+      });
+
+      var core = coreAll ? (coreHave / coreAll) * 55 : 22;
+
+      // Seniority
+      var yrs = null;
+      var m = text.match(/(\d{1,2})\s*(?:\+|plus)?\s*(?:-|to)?\s*(\d{1,2})?\s*years?/);
+      if (m) { yrs = parseInt(m[1], 10); }
+      var sen, senNote;
+      if (yrs === null) { sen = 6; senNote = "No years stated. Neutral score."; }
+      else if (yrs <= 3) { sen = 8; senNote = yrs + "+ years asked. You have more than enough."; }
+      else if (yrs <= 5) { sen = 8; senNote = yrs + "+ years asked. You are at the line."; }
+      else if (yrs === 6) { sen = 6; senNote = yrs + "+ years asked. Slightly above your 5."; }
+      else if (yrs <= 8) { sen = 3; senNote = yrs + "+ years asked. You will need a referral."; }
+      else { sen = 1; senNote = yrs + "+ years asked. Out of range."; }
+
+      // Location
+      var loc, locNote;
+      if (/\b(remote|anywhere|distributed|work from home|wfh)\b/.test(text)) { loc = 8; locNote = "Remote or distributed. Fits."; }
+      else if (/\b(hybrid|flexible)\b/.test(text)) { loc = 7; locNote = "Hybrid. Check the office days."; }
+      else if (/\b(delhi|new delhi|noida|gurugram|gurgaon|ncr)\b/.test(text)) { loc = 8; locNote = "Delhi NCR. You are local."; }
+      else if (/\b(india|bengaluru|bangalore|mumbai|pune|hyderabad)\b/.test(text)) { loc = 5; locNote = "India, other city. Relocation or travel needed."; }
+      else { loc = 2; locNote = "On-site outside India. Work authorisation is the gate."; }
+
+      // Title
+      var title = raw.split("\n").slice(0, 3).join(" ").slice(0, 220).toLowerCase();
+      var hits = PROFILE.roles.filter(function (r) { return title.indexOf(r) > -1; });
+      var ti, tiNote;
+      if (hits.length >= 2) { ti = 8; tiNote = "Title lines up with your target roles."; }
+      else if (hits.length === 1) { ti = 6; tiNote = "Adjacent title. Reframe your headline."; }
+      else { ti = 2; tiNote = "Title does not match your target roles."; }
+
+      if (track === "pm") { core = Math.min(55, core + 2); }
+      if (track === "pmm") { core = Math.min(55, core + 2); }
+
+      // Domain
+      var dom = 6, domNote = "No strong domain match.";
+      for (var i = 0; i < DOMAIN_RULES.length; i++) {
+        if (DOMAIN_RULES[i].re.test(text)) { dom = DOMAIN_RULES[i].score; domNote = DOMAIN_RULES[i].note; break; }
+      }
+
+      var total = Math.round(core + dom + sen + loc + ti);
+      total = Math.max(0, Math.min(100, total));
+
+      var verdict, sub;
+      if (total >= 75) { verdict = "Strong fit. Apply this week."; sub = "Lead with the HIREin story and the production RAG work."; }
+      else if (total >= 60) { verdict = "Worth applying. Close the gaps first."; sub = "Rewrite two bullets using their exact words, then send."; }
+      else if (total >= 45) { verdict = "Stretch. Needs a referral."; sub = "Find someone inside before you apply cold."; }
+      else { verdict = "Skip, unless you have a warm intro."; sub = "The keyword gap is too wide for an ATS to pass you."; }
+
+      var proof = PROOF.filter(function (p) {
+        return p.tags.some(function (t) {
+          return matched.some(function (f) { return f.id === t; });
+        });
+      }).slice(0, 3);
+
+      return {
+        total: total, core: Math.round(core), dom: dom, sen: sen, loc: loc, ti: ti,
+        matched: matched, gaps: gaps, verdict: verdict, sub: sub, proof: proof,
+        notes: { sen: senNote, loc: locNote, ti: tiNote, dom: domNote }
+      };
+    }
+
+    function render(r) {
+      var html = "";
+      html += '<div class="score-wrap">';
+      html += '<div class="dial" style="--p:' + r.total + '"><div class="dial-in">' + r.total + '</div></div>';
+      html += '<div><div class="verdict">' + r.verdict + '</div><div class="verdict-sub">' + r.sub + '</div></div>';
+      html += '</div>';
+
+      var bars = [
+        ["Skills match", r.core, 55],
+        ["Domain fit", r.dom, 21],
+        ["Seniority", r.sen, 8],
+        ["Location", r.loc, 8],
+        ["Title fit", r.ti, 8]
+      ];
+      html += '<div class="bars">';
+      bars.forEach(function (b) {
+        html += '<div class="bar-row"><span class="lbl">' + b[0] + '</span><span class="track"><span class="fill" style="width:' + Math.round((b[1] / b[2]) * 100) + '%"></span></span><span class="num">' + b[1] + '/' + b[2] + '</span></div>';
+      });
+      html += '</div>';
+
+      html += '<h3 class="block">You already match</h3><div class="chips">';
+      if (!r.matched.length) { html += '<span class="chip">Nothing obvious. Rework the resume headline.</span>'; }
+      r.matched.forEach(function (f) { html += '<span class="chip ok">' + f.label + '</span>'; });
+      html += '</div>';
+
+      html += '<h3 class="block">Gaps in the posting</h3><div class="chips">';
+      if (!r.gaps.length) { html += '<span class="chip ok">No hard tool gaps found</span>'; }
+      r.gaps.forEach(function (g) { html += '<span class="chip gap">' + g.label + '</span>'; });
+      html += '</div>';
+
+      html += '<h3 class="block">Lead with these</h3>';
+      if (!r.proof.length) { html += '<div class="proof">Use the HIREin story. It covers AI, product, and GTM at once.</div>'; }
+      r.proof.forEach(function (p) { html += '<div class="proof">' + p.text + '</div>'; });
+
+      html += '<div class="note"><b>Read this before you edit anything.</b> A gap means the posting asks for it and your resume does not show it. Add a keyword only if you have actually done the work. The scorer cannot tell the difference. A recruiter can.</div>';
+      html += '<div class="row"><button class="btn ghost" id="copyBtn">Copy result</button><button class="btn ghost" id="againBtn">Score another</button></div>';
+
+      var box = document.getElementById("result");
+      box.innerHTML = html;
+
+      document.getElementById("copyBtn").addEventListener("click", function () {
+        var txt = "Fit score: " + r.total + "/100\n" + r.verdict + "\n\nMatched: " +
+          r.matched.map(function (f) { return f.label; }).join(", ") +
+          "\nGaps: " + (r.gaps.map(function (g) { return g.label; }).join(", ") || "none found");
+        navigator.clipboard.writeText(txt).then(function () {
+          document.getElementById("copyBtn").textContent = "Copied";
+          setTimeout(function () { document.getElementById("copyBtn").textContent = "Copy result"; }, 1600);
+        });
+      });
+      document.getElementById("againBtn").addEventListener("click", function () {
+        document.getElementById("jd").focus();
+      });
+    }
+
+    document.getElementById("scoreBtn").addEventListener("click", function () {
+      var raw = document.getElementById("jd").value.trim();
+      if (raw.length < 80) {
+        document.getElementById("result").innerHTML = '<div class="empty">That is too short to score. Paste at least a few lines of the posting.</div>';
+        return;
+      }
+      render(scoreJD(raw, ""));
+    });
+
+    document.getElementById("sampleBtn").addEventListener("click", function () {
+      document.getElementById("jd").value = SAMPLE;
+      render(scoreJD(SAMPLE, ""));
+    });
+
+    document.getElementById("clearBtn").addEventListener("click", function () {
+      document.getElementById("jd").value = "";
+      document.getElementById("result").innerHTML = '<div class="empty">Your result will appear here.<br>No data leaves this page.</div>';
+      document.getElementById("jd").focus();
+    });
+  })();
+  </script>
+</body>
+</html>
