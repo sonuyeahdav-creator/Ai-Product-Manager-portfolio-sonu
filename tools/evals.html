@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Evals | Sonu Yadav</title>
+  <meta name="description" content="How Sonu Yadav tests AI output before trusting it: test sets, failure types, the fix, and the numbers behind HIREin's 100 percent JSON reliability.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/tools/evals.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff; --bg-alt: #f7f5f2; --surface: #ffffff; --border: #e8e4dd;
+      --text: #1a1a2e; --muted: #5b5b6e; --accent: #1a1a2e; --accent-warm: #b45309;
+      --accent-soft: #f5f0e8; --green: #0f766e; --red: #b91c1c;
+      --radius: 12px; --shadow: 0 2px 12px rgba(26,26,46,0.06); --maxw: 1080px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent-warm); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    nav { position: sticky; top: 0; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 50; }
+    .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-weight: 800; font-size: 17px; color: var(--text); letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent-warm); text-decoration: none; }
+    .nav-links .nav-cta { padding: 10px 20px; background: #b45309; color: #fff !important; -webkit-text-fill-color: #fff; border-radius: 9px; font-size: 14px; font-weight: 800; box-shadow: 0 4px 16px rgba(180,83,9,0.45); }
+    .nav-links .nav-cta:hover { filter: brightness(1.12); color: #fff !important; -webkit-text-fill-color: #fff; text-decoration: none; }
+
+    header.hero { padding: 60px 0 44px; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-warm); font-weight: 700; margin-bottom: 12px; }
+    h1 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(32px, 4.6vw, 48px); font-weight: 700; letter-spacing: -1.2px; line-height: 1.07; margin-bottom: 14px; }
+    .lead { color: var(--muted); font-size: 16px; max-width: 660px; }
+
+    section { padding: 52px 0; border-bottom: 1px solid var(--border); }
+    .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-warm); font-weight: 700; margin-bottom: 8px; }
+    section h2 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(24px, 3vw, 32px); font-weight: 700; letter-spacing: -0.6px; margin-bottom: 10px; }
+    .section-lead { color: var(--muted); max-width: 720px; margin-bottom: 28px; }
+    p.body { color: var(--muted); max-width: 760px; margin-bottom: 14px; font-size: 15px; }
+    p.body b { color: var(--text); }
+
+    .stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .stat { background: var(--surface); padding: 22px 20px; }
+    .stat .n { font-family: 'Fraunces', Georgia, serif; font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
+    .stat .l { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .step { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+    .step .n { font-family: 'Fraunces', Georgia, serif; font-size: 13px; font-weight: 700; color: var(--accent-warm); }
+    .step h3 { font-size: 15px; font-weight: 700; margin: 4px 0 6px; }
+    .step p { font-size: 13px; color: var(--muted); }
+
+    .table-wrap { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th { text-align: left; padding: 12px 14px; background: var(--bg-alt); font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-warm); }
+    td { padding: 12px 14px; border-top: 1px solid var(--border); color: var(--muted); vertical-align: top; }
+    td b { color: var(--text); font-weight: 600; }
+    td.tag { white-space: nowrap; color: var(--text); font-weight: 600; }
+
+    .case { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; }
+    .case h3 { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+    .case .sub { color: var(--accent-warm); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 18px; }
+    .rows { display: grid; gap: 12px; }
+    .row { display: grid; grid-template-columns: 84px 1fr; gap: 14px; font-size: 14px; }
+    .row .k { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-warm); padding-top: 3px; }
+    .row .v { color: var(--muted); }
+    .row .v b { color: var(--text); }
+
+    .honest { border-left: 3px solid var(--accent-warm); background: var(--accent-soft); padding: 18px 20px; border-radius: 0 10px 10px 0; font-size: 14px; color: var(--muted); }
+    .honest b { color: var(--text); }
+    .honest ul { margin: 8px 0 0 18px; }
+    .honest li { margin-bottom: 5px; }
+
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; box-shadow: var(--shadow); }
+    .card h3 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .card p { font-size: 13px; color: var(--muted); margin-bottom: 10px; }
+    .card ul { margin-left: 18px; font-size: 13px; color: var(--muted); }
+    .card li { margin-bottom: 4px; }
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 9px; font-weight: 600; font-size: 14px; border: 1px solid var(--border); background: var(--surface); color: var(--text); transition: all .2s; }
+    .btn:hover { border-color: var(--accent-warm); color: var(--accent-warm); text-decoration: none; transform: translateY(-1px); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.primary:hover { filter: brightness(1.12); color: #fff; }
+
+    footer { padding: 30px 0 44px; text-align: center; color: var(--muted); font-size: 13px; }
+    footer .foot-links { display: flex; gap: 22px; justify-content: center; margin-bottom: 12px; flex-wrap: wrap; }
+    footer .foot-links a { color: var(--muted); font-size: 13px; }
+    footer .foot-links a:hover { color: var(--accent-warm); text-decoration: none; }
+
+    @media (max-width: 620px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-links .nav-cta { padding: 9px 15px; font-size: 13px; }
+    }
+    @media (max-width: 820px) {
+      .steps, .stat-row, .grid2 { grid-template-columns: 1fr; }
+      .row { grid-template-columns: 1fr; gap: 2px; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+    a:focus, button:focus { outline: 2px solid var(--accent-warm); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="../">Sonu Yadav</a>
+      <div class="nav-links">
+        <a href="index.html">All tools</a>
+        <a href="fit-scorer.html">Fit scorer</a>
+        <a class="nav-cta" href="../#contact">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="eyebrow">Evals</div>
+      <h1>How I test AI output before I trust it</h1>
+      <p class="lead">A demo shows the happy path. An eval shows what happens on the twelfth messy input. This page is the method I use, plus the one project where I can show the numbers.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="section-label">Why it matters</div>
+      <h2>The eval set is the product</h2>
+      <p class="body">An LLM feature fails quietly. A button either works or it does not. A model returns something plausible, the screen looks fine, and the error shows up three weeks later in a shortlist nobody can explain.</p>
+      <p class="body">So I build a small set of real inputs, run every change against it, and write down each failure in a category. The category is the useful part. "It is unreliable" cannot be fixed. <b>"The parser guesses when the resume has two columns"</b> can be fixed by Monday.</p>
+      <div class="stat-row">
+        <div class="stat"><div class="n">100%</div><div class="l">JSON parsing reliability on HIREin, measured after the redesign</div></div>
+        <div class="stat"><div class="n">1st / 60</div><div class="l">Hackathon result, Masai School x IIT Patna</div></div>
+        <div class="stat"><div class="n">1 page</div><div class="l">Eval log per feature, plain text, versioned with the code</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">Loop</div>
+      <h2>Six steps, one day</h2>
+      <p class="section-lead">Small enough to repeat every week. Rigorous enough to catch the failures that matter.</p>
+      <div class="steps">
+        <div class="step"><div class="n">01</div><h3>Collect real inputs</h3><p>Twenty to fifty cases from production or from the client. Not synthetic examples I wrote myself.</p></div>
+        <div class="step"><div class="n">02</div><h3>Write the expected output</h3><p>By hand, once. This is the ground truth. It is boring and it is the whole exercise.</p></div>
+        <div class="step"><div class="n">03</div><h3>Pick one metric per failure mode</h3><p>Schema valid. Field accuracy. Grounded answer. Correct tool call. One number each.</p></div>
+        <div class="step"><div class="n">04</div><h3>Run and log</h3><p>Every failure gets a category and the input that caused it. Keep the input file.</p></div>
+        <div class="step"><div class="n">05</div><h3>Fix the smallest thing</h3><p>Usually the boundary between two steps, not the model. Re-run the whole set.</p></div>
+        <div class="step"><div class="n">06</div><h3>Ship the number</h3><p>Put the pass rate in the release note. If it drops later, someone will notice.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">Case</div>
+      <h2>HIREin: parse, then score</h2>
+      <p class="section-lead">A recruitment engine that reads a resume and scores it against a job description. The first version did both in one prompt.</p>
+      <div class="case">
+        <h3>What broke, and what fixed it</h3>
+        <div class="sub">Real resumes, not demo resumes</div>
+        <div class="rows">
+          <div class="row"><div class="k">Task</div><div class="v">Resume in, structured JSON out, then a score against the job description with reasons.</div></div>
+          <div class="row"><div class="k">Test set</div><div class="v">Real resumes with two column layouts, tables, unusual headers, and inconsistent date formats. The kind of file a recruiter actually receives.</div></div>
+          <div class="row"><div class="k">Failures</div><div class="v">Five types, listed in the table below. The worst was not broken JSON. It was confident invention, where the model filled a missing field with a plausible skill.</div></div>
+          <div class="row"><div class="k">Fix</div><div class="v">Split parsing and scoring into two agents with a typed contract between them. Added retry on the parse step and a repair routine for trailing commas and unescaped quotes.</div></div>
+          <div class="row"><div class="k">Result</div><div class="v"><b>100 percent JSON parsing reliability</b> in testing. <b>1st place out of 60 teams</b> at the Masai School x IIT Patna hackathon, pitched to senior PMs from Google Maps and Microsoft.</div></div>
+          <div class="row"><div class="k">Tradeoff</div><div class="v">Two calls cost more and take longer. A wrong shortlist is worse than a slow one.</div></div>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:18px">
+        <table>
+          <thead>
+            <tr><th>Failure</th><th>What it looked like</th><th>Root cause</th><th>Fix</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="tag">Truncated JSON</td><td>Output stopped mid object on long resumes</td><td>One call doing extraction and judgement, so the context filled up</td><td>Split the steps, cap the output, retry once</td></tr>
+            <tr><td class="tag">Broken syntax</td><td>Trailing commas, unescaped quotes</td><td>Model wrote prose inside a JSON string</td><td>Repair routine before validation</td></tr>
+            <tr><td class="tag">Invented fields</td><td>A skill the candidate never listed</td><td>Judgement leaking into extraction</td><td>Parse agent has no opinion, only extraction</td></tr>
+            <tr><td class="tag">Layout misread</td><td>Two column resume merged into one line</td><td>Text extraction order, not the model</td><td>Normalise the text before the model sees it</td></tr>
+            <tr><td class="tag">Score drift</td><td>Same resume, different score on a re-run</td><td>Scoring while parsing, with no fixed contract</td><td>Score only the clean profile, with stated criteria</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">Patterns</div>
+      <h2>What I measure, by feature type</h2>
+      <p class="section-lead">The metric follows the failure mode. There is no single eval that covers every AI feature.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>Feature</th><th>Metric</th><th>My default bar</th><th>What it catches</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="tag">Extraction</td><td>Schema valid rate, field accuracy against a labelled set</td><td>100% schema, 95% fields</td><td>Invention, truncation, layout misreads</td></tr>
+            <tr><td class="tag">RAG answers</td><td>Groundedness, coverage, correct refusal</td><td>Every claim traceable to a chunk</td><td>Confident answers with no source</td></tr>
+            <tr><td class="tag">Agent tools</td><td>Tool choice accuracy, argument validity, task completion</td><td>No side effect on a failed call</td><td>Wrong tool, malformed arguments, loops</td></tr>
+            <tr><td class="tag">Generated copy</td><td>Fact trace rate, banned phrase rate, human edit distance</td><td>Every number traces to a source</td><td>Hype, invented metrics, wrong claims</td></tr>
+            <tr><td class="tag">Classification</td><td>Precision and recall per class, not overall accuracy</td><td>Report the class that matters</td><td>A good average hiding a broken class</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">Honesty</div>
+      <h2>What is not measured yet</h2>
+      <p class="section-lead">A public eval page is only worth reading if it says where the evidence stops.</p>
+      <div class="honest">
+        <b>Measured:</b> HIREin parsing reliability, by hand, against a set of real resumes.
+        <br><b>Not measured yet:</b>
+        <ul>
+          <li>Skill extraction accuracy against a human labelled set. I know the JSON is valid. I do not have a field level accuracy number.</li>
+          <li>Whether the score agrees with a recruiter's judgement. That needs override data from real users.</li>
+          <li>The content agent and the video editor. Both are in use. Neither has a formal eval set.</li>
+        </ul>
+        <br>I would rather write that down than put a fake percentage on this page.
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">Next</div>
+      <h2>What I would build next</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3>An override log</h3>
+          <p>Every time a recruiter changes a score, store the before, the after, and the reason. That log is a free eval set, and it grows with usage.</p>
+          <ul>
+            <li>Tracks agreement over time</li>
+            <li>Turns disagreement into a test case</li>
+            <li>Makes the model's opinion auditable</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Evals in the release note</h3>
+          <p>A pass rate next to the version number. If the number drops, the release waits. Same discipline as a test suite, applied to output that has no fixed answer.</p>
+          <ul>
+            <li>One number per failure mode</li>
+            <li>Run on every prompt change</li>
+            <li>Failures linked to the input file</li>
+          </ul>
+        </div>
+      </div>
+      <div style="margin-top:24px; display:flex; gap:12px; flex-wrap:wrap">
+        <a class="btn primary" href="fit-scorer.html">Try the fit scorer</a>
+        <a class="btn" href="index.html">All tools</a>
+        <a class="btn" href="mailto:sonuyeahdav@gmail.com?subject=Evals">Talk evals</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="foot-links">
+        <a href="../">Home</a>
+        <a href="index.html">Tools</a>
+        <a href="fit-scorer.html">Fit scorer</a>
+        <a href="../resume/Sonu_Yadav_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/sonu-yadav-l/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:sonuyeahdav@gmail.com">Email</a>
+      </div>
+      <p>© 2026 Sonu Yadav. Built by hand.</p>
+    </div>
+  </footer>
+</body>
+</html>

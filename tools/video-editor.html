@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Video Editor | Sonu Yadav</title>
+  <meta name="description" content="An AI video editor built as a standalone web app. The live build runs in the page, with a direct link if the embed is blocked.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="canonical" href="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/tools/video-editor.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #ffffff; --bg-alt: #f7f5f2; --surface: #ffffff; --border: #e8e4dd;
+      --text: #1a1a2e; --muted: #5b5b6e; --accent: #1a1a2e; --accent-warm: #b45309;
+      --accent-soft: #f5f0e8; --green: #0f766e;
+      --radius: 12px; --shadow: 0 2px 12px rgba(26,26,46,0.06); --maxw: 1080px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent-warm); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .container { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+    nav { position: sticky; top: 0; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); z-index: 50; }
+    .nav-inner { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; height: 64px; display: flex; align-items: center; justify-content: space-between; }
+    .brand { font-weight: 800; font-size: 17px; color: var(--text); letter-spacing: -0.3px; }
+    .nav-links { display: flex; gap: 24px; align-items: center; }
+    .nav-links a { color: var(--muted); font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--accent-warm); text-decoration: none; }
+    .nav-links .nav-cta { padding: 10px 20px; background: #b45309; color: #fff !important; -webkit-text-fill-color: #fff; border-radius: 9px; font-size: 14px; font-weight: 800; box-shadow: 0 4px 16px rgba(180,83,9,0.45); }
+    .nav-links .nav-cta:hover { filter: brightness(1.12); color: #fff !important; -webkit-text-fill-color: #fff; text-decoration: none; }
+
+    header.hero { padding: 58px 0 40px; border-bottom: 1px solid var(--border); }
+    .eyebrow { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-warm); font-weight: 700; margin-bottom: 12px; }
+    h1 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(32px, 4.6vw, 48px); font-weight: 700; letter-spacing: -1.2px; line-height: 1.07; margin-bottom: 14px; }
+    .lead { color: var(--muted); font-size: 16px; max-width: 680px; }
+
+    section { padding: 46px 0; }
+    .section-label { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--accent-warm); font-weight: 700; margin-bottom: 8px; }
+    section h2 { font-family: 'Fraunces', Georgia, serif; font-size: clamp(22px, 3vw, 30px); font-weight: 700; letter-spacing: -0.6px; margin-bottom: 10px; }
+    .section-lead { color: var(--muted); max-width: 720px; margin-bottom: 24px; font-size: 15px; }
+
+    .embed-card { border: 1px solid var(--border); border-radius: 20px; background: var(--surface); box-shadow: var(--shadow); overflow: hidden; }
+    .embed-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 1px solid var(--border); flex-wrap: wrap; }
+    .embed-title { display: flex; align-items: center; gap: 9px; font-size: 13px; font-weight: 700; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(15,118,110,0.12); }
+    .embed-hint { font-size: 12px; color: var(--muted); }
+    .frame-wrap { background: var(--bg-alt); }
+    iframe { display: block; width: 100%; height: 850px; border: 0; border-radius: 0 0 20px 20px; background: #fff; }
+
+    .fallback { padding: 56px 28px; text-align: center; background: var(--bg-alt); }
+    .fallback h3 { font-family: 'Fraunces', Georgia, serif; font-size: 22px; margin-bottom: 8px; letter-spacing: -0.4px; }
+    .fallback p { color: var(--muted); font-size: 14px; max-width: 520px; margin: 0 auto 20px; }
+    .fallback .tiny { font-size: 12px; color: var(--muted); margin-top: 14px; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 20px; border-radius: 9px; font-weight: 600; font-size: 14px; border: 1px solid var(--border); background: var(--surface); color: var(--text); transition: all .2s; }
+    .btn:hover { border-color: var(--accent-warm); color: var(--accent-warm); text-decoration: none; transform: translateY(-1px); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    .btn.primary:hover { filter: brightness(1.12); color: #fff; }
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-top: 22px; }
+    .fact { background: var(--surface); padding: 18px 20px; }
+    .fact b { display: block; font-size: 14px; margin-bottom: 2px; }
+    .fact span { font-size: 13px; color: var(--muted); }
+
+    footer { padding: 28px 0 44px; text-align: center; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); }
+    footer .foot-links { display: flex; gap: 22px; justify-content: center; margin-bottom: 12px; flex-wrap: wrap; }
+    footer .foot-links a { color: var(--muted); font-size: 13px; }
+    footer .foot-links a:hover { color: var(--accent-warm); text-decoration: none; }
+
+    [hidden] { display: none !important; }
+    @media (max-width: 620px) {
+      .nav-links a:not(.nav-cta) { display: none; }
+      .nav-links .nav-cta { padding: 9px 15px; font-size: 13px; }
+    }
+    @media (max-width: 820px) {
+      iframe { height: 620px; }
+      .facts { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+    a:focus, button:focus { outline: 2px solid var(--accent-warm); outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a class="brand" href="../">Sonu Yadav</a>
+      <div class="nav-links">
+        <a href="index.html">All tools</a>
+        <a href="fit-scorer.html">Fit scorer</a>
+        <a href="evals.html">Evals</a>
+        <a class="nav-cta" href="../#contact">Get in touch</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="eyebrow">Live build</div>
+      <h1>AI video editor</h1>
+      <p class="lead">A standalone web app for editing video with AI. The live build runs in this page. If your browser blocks the frame, the direct link is right below the app.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+      <div class="embed-card">
+        <div class="embed-head">
+          <div class="embed-title"><span class="dot"></span> Live app</div>
+          <div class="embed-hint">If the frame stays blank, open it in a new tab.</div>
+        </div>
+
+        <div class="frame-wrap" id="frameWrap" hidden>
+          <iframe
+            id="demoFrame"
+            title="AI video editor live demo"
+            allow="fullscreen; clipboard-write"
+            loading="lazy"></iframe>
+        </div>
+
+        <div class="fallback" id="fallback">
+          <h3>The live link is not published yet</h3>
+          <p>The editor is built. I am finishing the public deploy, and this page will load the real app as soon as the URL is live.</p>
+          <div class="btn-row">
+            <a class="btn primary" href="mailto:sonuyeahdav@gmail.com?subject=AI%20video%20editor%20walkthrough">Ask for a walkthrough</a>
+            <a class="btn" href="index.html">Back to all tools</a>
+          </div>
+          <p class="tiny">No video, no mockup. This space is reserved for the working app.</p>
+        </div>
+      </div>
+
+      <div class="btn-row" id="openRow" hidden style="margin-top:16px">
+        <a class="btn primary" id="openBtn" href="#" target="_blank" rel="noopener">Open the app in a new tab</a>
+        <a class="btn" href="index.html">All tools</a>
+      </div>
+
+      <div class="facts">
+        <div class="fact"><b>Runs in the browser</b><span>No install, no download.</span></div>
+        <div class="fact"><b>One job</b><span>Edit and export video in one place.</span></div>
+        <div class="fact"><b>Graceful fallback</b><span>Some hosts block frames. The direct link always works.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="section-label">Why it is here</div>
+      <h2>Most AI tools are shown as a video. This one runs.</h2>
+      <p class="section-lead">A screen recording proves the happy path. A working embed lets you click the thing yourself. That is a higher bar, and it is the bar I want on this page.</p>
+      <p class="section-lead">The build is part of the same pattern as the rest of the portfolio: take a workflow that normally needs a specialist, put a model inside it, and keep a human decision at the end.</p>
+      <div class="btn-row" style="justify-content:flex-start">
+        <a class="btn primary" href="evals.html">How I test AI output</a>
+        <a class="btn" href="fit-scorer.html">Try the fit scorer</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="foot-links">
+        <a href="../">Home</a>
+        <a href="index.html">Tools</a>
+        <a href="evals.html">Evals</a>
+        <a href="../resume/Sonu_Yadav_Resume.pdf" target="_blank" rel="noopener">Resume</a>
+        <a href="https://www.linkedin.com/in/sonu-yadav-l/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:sonuyeahdav@gmail.com">Email</a>
+      </div>
+      <p>© 2026 Sonu Yadav. Built by hand.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Paste the deployed app URL between the quotes. Example:
+    // https://my-video-editor.vercel.app
+    const DEMO_URL = "";
+
+    // You can also preview without editing this file: video-editor.html?demo=YOUR_URL
+    const params = new URLSearchParams(window.location.search);
+    const url = (params.get("demo") || DEMO_URL || "").trim();
+
+    const wrap = document.getElementById("frameWrap");
+    const frame = document.getElementById("demoFrame");
+    const fallback = document.getElementById("fallback");
+    const openRow = document.getElementById("openRow");
+    const openBtn = document.getElementById("openBtn");
+
+    if (url) {
+      frame.src = url;
+      wrap.hidden = false;
+      fallback.hidden = true;
+      openRow.hidden = false;
+      openBtn.href = url;
+    }
+  </script>
+</body>
+</html>
