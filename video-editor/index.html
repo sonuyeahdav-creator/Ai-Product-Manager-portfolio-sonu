@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ReelSense AI — Autonomous E-Commerce Video Ad Copilot | AI PM Portfolio</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            display: ['"Space Grotesk"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              400: '#38bdf8',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            },
+            accent: {
+              yellow: '#facc15',
+              green: '#22c55e',
+              purple: '#a855f7',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      background-color: #08090d;
+      color: #f1f5f9;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .grid-bg {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+    .glass-panel {
+      background: rgba(15, 20, 28, 0.75);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .glass-pill {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    /* Phone Mockup Glow */
+    .phone-shadow {
+      box-shadow: 0 25px 60px -15px rgba(56, 189, 248, 0.25), 0 0 0 12px #1e293b, 0 0 0 14px rgba(255, 255, 255, 0.1);
+    }
+  </style>
+</head>
+<body class="grid-bg min-h-screen antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Top Navigation Bar -->
+  <header class="sticky top-0 z-50 border-b border-slate-800/80 bg-slate-950/80 backdrop-blur-xl">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-brand-500 to-accent-purple flex items-center justify-center shadow-lg shadow-brand-500/20">
+          <i data-lucide="sparkles" class="w-5 h-5 text-white"></i>
+        </div>
+        <div>
+          <span class="font-display font-bold text-lg tracking-tight text-white">ReelSense<span class="text-brand-400">.ai</span></span>
+          <span class="ml-2 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider bg-brand-500/10 text-brand-400 border border-brand-500/20 rounded-full">AI PM Project</span>
+        </div>
+      </div>
+
+      <nav class="hidden md:flex items-center gap-1 glass-pill px-2 py-1 rounded-full">
+        <button onclick="switchTab('studio')" id="tab-btn-studio" class="px-4 py-1.5 text-xs font-semibold rounded-full bg-brand-500 text-white transition-all">
+          Product Studio
+        </button>
+        <button onclick="switchTab('prd')" id="tab-btn-prd" class="px-4 py-1.5 text-xs font-semibold rounded-full text-slate-300 hover:text-white transition-all">
+          AI PM Case Study & PRD
+        </button>
+        <button onclick="switchTab('arch')" id="tab-btn-arch" class="px-4 py-1.5 text-xs font-semibold rounded-full text-slate-300 hover:text-white transition-all">
+          System Architecture
+        </button>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <button onclick="openEmbedModal()" class="flex items-center gap-2 text-xs font-semibold px-3 py-1.5 rounded-lg border border-slate-700 hover:border-slate-500 transition-colors">
+          <i data-lucide="code-2" class="w-4 h-4 text-brand-400"></i>
+          <span>Embed on Portfolio</span>
+        </button>
+        <a href="https://github.com/sonuyeahdav-creator" target="_blank" class="h-8 w-8 rounded-lg border border-slate-800 flex items-center justify-center text-slate-400 hover:text-white transition-colors">
+          <i data-lucide="github" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+    <!-- ================= TAB 1: PRODUCT STUDIO ================= -->
+    <section id="view-studio" class="space-y-8">
+      
+      <!-- Banner Hook for AI PM Portfolio -->
+      <div class="glass-panel rounded-3xl p-6 lg:p-8 relative overflow-hidden">
+        <div class="absolute -right-20 -top-20 w-80 h-80 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="max-w-3xl space-y-3">
+          <div class="flex items-center gap-2 text-xs font-semibold text-brand-400 uppercase tracking-widest">
+            <span class="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Multimodal E-Commerce Video Copilot
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-display font-bold text-white tracking-tight">
+            Turn Any E-Commerce Link Into a High-Converting <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-accent-yellow to-accent-green">Ali Abdaal-Style Motion Reel</span>
+          </h1>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Designed as an end-to-end AI Product: combines DOM vision extraction, LLM viral narrative planning, neural speech synthesis, and deterministic code-to-MP4 video rendering.
+          </p>
+        </div>
+      </div>
+
+      <!-- Studio Layout: Left Controls, Right Live Phone Mockup -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Controls Column (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6">
+
+          <!-- 1. Product Link Input -->
+          <div class="glass-panel rounded-2xl p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                <i data-lucide="link" class="w-4 h-4 text-brand-400"></i>
+                1. Product URL or SKU
+              </label>
+              <span class="text-[11px] text-slate-500">Flipkart / Amazon / Shopify supported</span>
+            </div>
+
+            <div class="relative">
+              <input type="text" id="input-url" 
+                value="https://www.flipkart.com/navsutr-typography-graphic-print-men-crew-neck-grey-t-shirt/p/itm1a2f6c2c95739?pid=TSHHSJGQ9NJ7HP9E" 
+                class="w-full bg-slate-900/90 border border-slate-700/80 rounded-xl px-4 py-3 text-xs text-slate-200 focus:outline-none focus:border-brand-500 pr-24 transition-colors font-mono" />
+              <button onclick="analyzeUrl()" class="absolute right-1.5 top-1.5 bottom-1.5 px-3 bg-brand-500 hover:bg-brand-600 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all">
+                <i data-lucide="scan" class="w-3.5 h-3.5"></i>
+                <span>Analyze</span>
+              </button>
+            </div>
+
+            <!-- Preset Pills -->
+            <div class="flex items-center gap-2 flex-wrap pt-1">
+              <span class="text-[11px] text-slate-400">Try Sample Presets:</span>
+              <button onclick="loadPreset('navsutr')" class="text-[11px] glass-pill px-2.5 py-1 rounded-md hover:bg-slate-800 text-slate-300 transition-colors">
+                👕 Navsutr Grey Tee (Flipkart)
+              </button>
+              <button onclick="loadPreset('jordans')" class="text-[11px] glass-pill px-2.5 py-1 rounded-md hover:bg-slate-800 text-slate-300 transition-colors">
+                👟 Air Jordan Retro (Nike)
+              </button>
+              <button onclick="loadPreset('keyboard')" class="text-[11px] glass-pill px-2.5 py-1 rounded-md hover:bg-slate-800 text-slate-300 transition-colors">
+                ⌨️ Mechanical Desk Keyboard
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. AI Creator Persona & Visual Grammar -->
+          <div class="glass-panel rounded-2xl p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                <i data-lucide="palette" class="w-4 h-4 text-accent-yellow"></i>
+                2. Motion Graphics & Creator Style
+              </label>
+              <span class="text-[11px] text-brand-400 font-semibold" id="style-tag">Ali Abdaal Motion Engine</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <!-- Style 1: Ali Abdaal -->
+              <div onclick="selectStyle('ali')" id="card-style-ali" class="cursor-pointer border-2 border-brand-500 bg-brand-500/10 rounded-xl p-3.5 transition-all space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-white">Ali Abdaal</span>
+                  <span class="w-2 h-2 rounded-full bg-brand-400"></span>
+                </div>
+                <p class="text-[11px] text-slate-300 leading-snug">
+                  High-retention kinetic text, yellow highlighter wipes, 3D floating cards & progress bar.
+                </p>
+                <div class="flex gap-1 pt-1">
+                  <span class="text-[9px] bg-slate-800 px-1.5 py-0.5 rounded text-amber-300">Kinetic</span>
+                  <span class="text-[9px] bg-slate-800 px-1.5 py-0.5 rounded text-emerald-300">3D Tilt</span>
+                </div>
+              </div>
+
+              <!-- Style 2: Mehak Mirza Prabhu -->
+              <div onclick="selectStyle('mehak')" id="card-style-mehak" class="cursor-pointer border border-slate-700/80 bg-slate-900/40 rounded-xl p-3.5 hover:border-slate-500 transition-all space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-slate-200">Mehak Mirza</span>
+                  <span class="w-2 h-2 rounded-full bg-slate-600"></span>
+                </div>
+                <p class="text-[11px] text-slate-400 leading-snug">
+                  Poetic Hindi/English spoken word, quiet confidence, mood lighting & deep audio pauses.
+                </p>
+                <div class="flex gap-1 pt-1">
+                  <span class="text-[9px] bg-slate-800 px-1.5 py-0.5 rounded text-purple-300">Spoken Word</span>
+                  <span class="text-[9px] bg-slate-800 px-1.5 py-0.5 rounded text-slate-300">Aesthetic</span>
+                </div>
+              </div>
+
+              <!-- Style 3: Alex Hormozi -->
+              <div onclick="selectStyle('hormozi')" id="card-style-hormozi" class="cursor-pointer border border-slate-700/80 bg-slate-900/40 rounded-xl p-3.5 hover:border-slate-500 transition-all space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-xs text-slate-200">Alex Hormozi</span>
+                  <span class="w-2 h-2 rounded-full bg-slate-600"></span>
+                </div>
+                <p class="text-[11px] text-slate-400 leading-snug">
+                  Aggressive hook framing, high-contrast red/green badges, punch zooms & price slash.
+                </p>
+                <div class="flex gap-1 pt-1">
+                  <span class="text-[9px] bg-slate-800 px-1.5 py-0.5 rounded text-red-300">High Dopamine</span>
+                  <span class="text-[9px] bg-slate-800 px-1.5 py-0.5 rounded text-yellow-300">Direct ROI</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. AI Generated Video Plan & Script Breakdown -->
+          <div class="glass-panel rounded-2xl p-6 space-y-4">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-2">
+                <i data-lucide="layers" class="w-4 h-4 text-accent-green"></i>
+                3. Generated 5-Scene Viral Timeline
+              </label>
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded-full font-semibold">
+                  Hook Score: 94/100
+                </span>
+                <span class="text-[11px] text-slate-500">28.0s Runtime</span>
+              </div>
+            </div>
+
+            <!-- Scene Timeline Cards -->
+            <div class="space-y-3 font-mono text-xs" id="timeline-container">
+              
+              <!-- Scene 1 -->
+              <div class="border border-slate-800 bg-slate-900/60 rounded-xl p-3.5 space-y-2 hover:border-slate-700 transition-colors">
+                <div class="flex items-center justify-between text-slate-400">
+                  <span class="font-bold text-brand-400">[00:00 - 00:06.5] SCENE 1: THE PATTERN INTERRUPT</span>
+                  <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">Hook Card</span>
+                </div>
+                <p class="text-slate-200 font-sans font-medium text-xs">
+                  <span class="text-amber-400 font-bold">VO:</span> "Stop buying cheap t-shirts. Here is why this single grey tee beats 90% of your wardrobe."
+                </p>
+                <div class="text-[11px] text-slate-400 font-sans flex items-center gap-2">
+                  <i data-lucide="video" class="w-3.5 h-3.5 text-slate-500"></i>
+                  <span>Visual: Top progress bar starts, yellow marker sweep over "cheap t-shirts", 3D floating product card springs in.</span>
+                </div>
+              </div>
+
+              <!-- Scene 2 -->
+              <div class="border border-slate-800 bg-slate-900/60 rounded-xl p-3.5 space-y-2 hover:border-slate-700 transition-colors">
+                <div class="flex items-center justify-between text-slate-400">
+                  <span class="font-bold text-red-400">[00:06.5 - 00:11.0] SCENE 2: THE 3 PAIN POINTS</span>
+                  <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">Problem Card</span>
+                </div>
+                <p class="text-slate-200 font-sans font-medium text-xs">
+                  <span class="text-amber-400 font-bold">VO:</span> "Problem: most shirts shrink, collars sag, and prints crack."
+                </p>
+                <div class="text-[11px] text-slate-400 font-sans flex items-center gap-2">
+                  <i data-lucide="video" class="w-3.5 h-3.5 text-slate-500"></i>
+                  <span>Visual: Frosted red glass card pops with 3 cross-out checks; stamp animation "AVOID".</span>
+                </div>
+              </div>
+
+              <!-- Scene 3 & 4 Combined summary -->
+              <div class="border border-slate-800 bg-slate-900/60 rounded-xl p-3.5 space-y-2 hover:border-slate-700 transition-colors">
+                <div class="flex items-center justify-between text-slate-400">
+                  <span class="font-bold text-emerald-400">[00:11.0 - 00:21.0] SCENE 3 & 4: THE FLIPKART UPGRADE</span>
+                  <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">Product Deep Dive</span>
+                </div>
+                <p class="text-slate-200 font-sans font-medium text-xs">
+                  <span class="text-amber-400 font-bold">VO:</span> "Solution: Navsutr Typography Tee on Flipkart. 100% combed cotton, zero shrinkage, and clean streetwear typography."
+                </p>
+                <div class="text-[11px] text-slate-400 font-sans flex items-center gap-2">
+                  <i data-lucide="video" class="w-3.5 h-3.5 text-slate-500"></i>
+                  <span>Visual: Verified rating badge (⭐ 4.8), 3 animated green checkmarks with sound pops.</span>
+                </div>
+              </div>
+
+              <!-- Scene 5 -->
+              <div class="border border-slate-800 bg-slate-900/60 rounded-xl p-3.5 space-y-2 hover:border-slate-700 transition-colors">
+                <div class="flex items-center justify-between text-slate-400">
+                  <span class="font-bold text-amber-400">[00:21.0 - 00:28.0] SCENE 5: THE PRICE DROP & CTA</span>
+                  <span class="text-[10px] bg-slate-800 px-2 py-0.5 rounded text-slate-300">Conversion Hook</span>
+                </div>
+                <p class="text-slate-200 font-sans font-medium text-xs">
+                  <span class="text-amber-400 font-bold">VO:</span> "Best part? The price just dropped to 399 rupees on Flipkart."
+                </p>
+                <div class="text-[11px] text-slate-400 font-sans flex items-center gap-2">
+                  <i data-lucide="video" class="w-3.5 h-3.5 text-slate-500"></i>
+                  <span>Visual: Red slash through ₹999 -> Neon ₹399 drop; pulsing Flipkart yellow CTA button.</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Phone Preview Column (5 Cols) -->
+        <div class="lg:col-span-5 flex flex-col items-center">
+          <div class="sticky top-24 space-y-4">
+            
+            <div class="flex items-center justify-between w-[340px] px-2 text-xs text-slate-400">
+              <span class="flex items-center gap-1.5 font-semibold text-slate-300">
+                <i data-lucide="smartphone" class="w-4 h-4 text-brand-400"></i>
+                Interactive 9:16 Preview
+              </span>
+              <span class="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded font-mono">
+                1080x1920 (30 FPS)
+              </span>
+            </div>
+
+            <!-- Phone Frame Mockup -->
+            <div class="w-[340px] h-[640px] bg-slate-950 rounded-[44px] phone-shadow relative overflow-hidden border border-slate-800/80 flex flex-col">
+              
+              <!-- Dynamic Island / Notch -->
+              <div class="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-slate-900 rounded-full z-50 flex items-center justify-end px-3">
+                <div class="w-2.5 h-2.5 rounded-full bg-slate-800 border border-slate-700"></div>
+              </div>
+
+              <!-- Animated Phone Screen Canvas -->
+              <div id="phone-screen" class="relative w-full h-full bg-[#0b0d11] overflow-hidden flex flex-col justify-between p-5 pt-12">
+                
+                <!-- Screen Progress Bar -->
+                <div class="absolute top-0 left-0 h-1.5 bg-gradient-to-r from-sky-400 via-emerald-400 to-yellow-400 w-full transition-all duration-300" id="sim-progress"></div>
+
+                <!-- Top Simulated Tag -->
+                <div class="flex justify-center z-10">
+                  <div class="px-3 py-1 rounded-full bg-white/10 border border-white/20 backdrop-blur text-[10px] font-bold tracking-wider text-slate-200 uppercase flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></span>
+                    WARDROBE AUDIT // 2026
+                  </div>
+                </div>
+
+                <!-- Center Animated Content (Switches with Scenes) -->
+                <div id="sim-scene-content" class="my-auto space-y-4 text-center transition-all duration-500">
+                  <div class="space-y-1">
+                    <h2 class="text-xl font-extrabold text-white leading-tight">
+                      Stop buying <span class="bg-yellow-400 text-slate-950 px-1.5 py-0.5 rounded font-black">cheap t-shirts</span>.
+                    </h2>
+                    <p class="text-[11px] text-slate-400">1 grey tee beats 90% of your wardrobe.</p>
+                  </div>
+
+                  <!-- 3D Floating Product Image Card -->
+                  <div class="relative w-48 h-48 mx-auto rounded-2xl overflow-hidden border border-white/20 shadow-2xl shadow-black/80 transform -rotate-3 hover:rotate-0 transition-transform">
+                    <img src="https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/k/u/r/m-tshirt-01-grey-nav-sutr-original-imahsjgqzqcyfzqd.jpeg?q=80" 
+                         alt="Navsutr Tee" class="w-full h-full object-cover">
+                    <div class="absolute top-2 right-2 bg-red-600/90 text-[9px] font-bold px-1.5 py-0.5 rounded-full text-white">
+                      ⚠️ 90% FAIL
+                    </div>
+                  </div>
+
+                  <!-- Price tag pop -->
+                  <div class="flex items-center justify-center gap-2 text-xs font-bold pt-1">
+                    <span class="text-slate-500 line-through">₹999</span>
+                    <span class="text-emerald-400 text-lg font-extrabold">₹399 ONLY</span>
+                  </div>
+                </div>
+
+                <!-- Bottom CTA Button in Mockup -->
+                <div class="z-10 space-y-2">
+                  <div class="w-full py-2.5 bg-yellow-400 text-slate-950 font-extrabold text-xs rounded-full flex items-center justify-center gap-1 shadow-lg shadow-yellow-500/20">
+                    <span>BUY NOW ON FLIPKART</span>
+                    <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                  </div>
+                  <div class="text-[10px] text-slate-400 text-center">
+                    🔍 Search: "Navsutr Typography Grey T-Shirt"
+                  </div>
+                </div>
+
+              </div>
+
+              <!-- Controls Toolbar Under Phone -->
+              <div class="bg-slate-900 border-t border-slate-800 p-3 flex items-center justify-between text-xs">
+                <button onclick="togglePlay()" id="play-btn" class="flex items-center gap-1 text-slate-300 hover:text-white font-semibold">
+                  <i data-lucide="play" class="w-4 h-4 text-brand-400"></i>
+                  <span id="play-label">Play Mockup</span>
+                </button>
+                <div class="text-[11px] text-slate-500 font-mono" id="sim-time">00:05 / 00:28</div>
+                <button onclick="restartSim()" class="text-slate-400 hover:text-white">
+                  <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+
+            </div>
+
+            <!-- Download Rendered Asset Button -->
+            <div class="text-center">
+              <a href="ali_abdaal_motion_graphics_promo.mp4" download class="inline-flex items-center gap-2 text-xs font-semibold px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
+                <i data-lucide="download" class="w-4 h-4 text-emerald-400"></i>
+                <span>Download Generated MP4 (6.39 MB)</span>
+              </a>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= TAB 2: AI PM CASE STUDY & PRD ================= -->
+    <section id="view-prd" class="hidden space-y-8">
+      
+      <!-- PRD Header -->
+      <div class="glass-panel rounded-3xl p-8 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-500/10 text-brand-400 border border-brand-500/20">
+            PRD & STRATEGY SPEC // DOC-2026-V1
+          </span>
+          <span class="text-xs text-slate-400 font-mono">Owner: AI Product Manager</span>
+        </div>
+        <h2 class="text-3xl font-display font-bold text-white">
+          Product Requirements Document: Autonomous Viral Reel Engine for D2C Brands
+        </h2>
+        <p class="text-slate-300 text-sm leading-relaxed max-w-4xl">
+          An automated system that converts any raw e-commerce product page into high-converting, motion-graphics video ads in under 35 seconds. Replaces manual agency workflows, slashing cost-per-creative from $1,200 to $0.05.
+        </p>
+      </div>
+
+      <!-- PRD Core Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        <!-- Card 1: Problem Statement & Opportunity -->
+        <div class="glass-panel rounded-2xl p-6 space-y-3">
+          <div class="flex items-center gap-2 text-amber-400 font-bold text-sm">
+            <i data-lucide="alert-circle" class="w-4 h-4"></i>
+            1. Problem Statement & Market Opportunity
+          </div>
+          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+            <li><strong class="text-white">• Creative Fatigue:</strong> E-commerce brands on Meta & TikTok suffer from ad burnout every 7–10 days. Producing 15–20 high-quality reels/month costs $15k–$25k.</li>
+            <li><strong class="text-white">• Agency Latency:</strong> Traditional motion graphic designers take 4–7 days per video iteration, making fast trend exploitation impossible.</li>
+            <li><strong class="text-white">• The Opportunity:</strong> Deliver studio-grade Ali Abdaal / Hormozi kinetic motion graphics fully deterministically in under 60 seconds with zero manual video editing software.</li>
+          </ul>
+        </div>
+
+        <!-- Card 2: User Personas & Target Customers -->
+        <div class="glass-panel rounded-2xl p-6 space-y-3">
+          <div class="flex items-center gap-2 text-brand-400 font-bold text-sm">
+            <i data-lucide="users" class="w-4 h-4"></i>
+            2. User Personas & Target Segments
+          </div>
+          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+            <li><strong class="text-white">• D2C Brand Founders & Performance Marketers:</strong> Need 50+ ad variants for weekly A/B testing across cold audience acquisition.</li>
+            <li><strong class="text-white">• Marketplace Sellers (Flipkart, Amazon, Shopify):</strong> Have high-performing SKUs but zero video production talent or budget.</li>
+            <li><strong class="text-white">• Social Media Agencies:</strong> Need to scale video output 10x without hiring 10 more After Effects animators.</li>
+          </ul>
+        </div>
+
+        <!-- Card 3: Key Functional Requirements -->
+        <div class="glass-panel rounded-2xl p-6 space-y-3">
+          <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm">
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            3. Core Functional Requirements (FRs)
+          </div>
+          <ul class="text-xs text-slate-300 space-y-2 leading-relaxed">
+            <li><strong class="text-white">• FR-1 (Multimodal Ingestion):</strong> Parse e-commerce URL, extract title, price, discount, review count, and high-res product cutout images.</li>
+            <li><strong class="text-white">• FR-2 (Viral Hook Synthesizer):</strong> Score and generate 5-scene narrative scripts based on proven psychological retention archetypes.</li>
+            <li><strong class="text-white">• FR-3 (Neural TTS Engine):</strong> Generate human-cadence voiceovers with customizable speech rate, pauses, and pitch sync.</li>
+            <li><strong class="text-white">• FR-4 (Headless Frame Rendering):</strong> Render 1080x1920 60 FPS motion graphics with hardware acceleration using GSAP and headless Chromium.</li>
+          </ul>
+        </div>
+
+        <!-- Card 4: Product Metrics & OKRs -->
+        <div class="glass-panel rounded-2xl p-6 space-y-3">
+          <div class="flex items-center gap-2 text-accent-purple font-bold text-sm">
+            <i data-lucide="trending-up" class="w-4 h-4"></i>
+            4. Success Metrics & Product KPIs
+          </div>
+          <div class="grid grid-cols-2 gap-3 pt-2 font-mono">
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+              <div class="text-[10px] text-slate-400 uppercase">3s Hook Retention</div>
+              <div class="text-lg font-bold text-emerald-400">> 65%</div>
+              <div class="text-[9px] text-slate-500">Industry avg: 38%</div>
+            </div>
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+              <div class="text-[10px] text-slate-400 uppercase">Render Latency</div>
+              <div class="text-lg font-bold text-brand-400">< 35s</div>
+              <div class="text-[9px] text-slate-500">Target for 28s reel</div>
+            </div>
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+              <div class="text-[10px] text-slate-400 uppercase">Cost Per Render</div>
+              <div class="text-lg font-bold text-yellow-400">$0.04</div>
+              <div class="text-[9px] text-slate-500">Cloud compute + TTS</div>
+            </div>
+            <div class="bg-slate-900 p-3 rounded-xl border border-slate-800">
+              <div class="text-[10px] text-slate-400 uppercase">ROAS Lift</div>
+              <div class="text-lg font-bold text-purple-400">+34%</div>
+              <div class="text-[9px] text-slate-500">vs Static image ads</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ================= TAB 3: SYSTEM ARCHITECTURE ================= -->
+    <section id="view-arch" class="hidden space-y-8">
+      
+      <div class="glass-panel rounded-3xl p-8 space-y-3">
+        <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-500/10 text-brand-400 border border-brand-500/20">
+          TECHNICAL DESIGN & ARCHITECTURE
+        </span>
+        <h2 class="text-3xl font-display font-bold text-white">
+          End-to-End AI Engineering Pipeline
+        </h2>
+        <p class="text-slate-400 text-sm max-w-3xl">
+          Visualizing how data flows from a raw e-commerce URL to a broadcast-grade 1080x1920 MP4 file ready for Meta & TikTok ad managers.
+        </p>
+      </div>
+
+      <!-- Architecture Pipeline Diagram -->
+      <div class="glass-panel rounded-2xl p-8 space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 relative">
+          
+          <!-- Step 1 -->
+          <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 space-y-3 relative">
+            <div class="w-8 h-8 rounded-lg bg-brand-500/20 text-brand-400 font-bold flex items-center justify-center text-xs">
+              01
+            </div>
+            <h3 class="font-bold text-white text-sm">Multimodal Ingestion</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Scrapes DOM, pricing, discount, rating, and extracts high-resolution transparent product cutouts.
+            </p>
+            <div class="text-[10px] font-mono text-slate-500 bg-slate-950 p-2 rounded">
+              Input: Product URL<br>Output: Product Meta JSON
+            </div>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 space-y-3 relative">
+            <div class="w-8 h-8 rounded-lg bg-accent-yellow/20 text-accent-yellow font-bold flex items-center justify-center text-xs">
+              02
+            </div>
+            <h3 class="font-bold text-white text-sm">Hook & Script LLM</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Synthesizes 5-scene viral narrative using Ali Abdaal / Hormozi retention taxonomy and word counts.
+            </p>
+            <div class="text-[10px] font-mono text-slate-500 bg-slate-950 p-2 rounded">
+              Model: Gemini 1.5 Pro / GPT-4o<br>Output: Timestamped Script
+            </div>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 space-y-3 relative">
+            <div class="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 font-bold flex items-center justify-center text-xs">
+              03
+            </div>
+            <h3 class="font-bold text-white text-sm">Neural Voice & Audio</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Synthesizes energetic voiceover, transcribes word timestamps with Whisper, and layers ambient SFX.
+            </p>
+            <div class="text-[10px] font-mono text-slate-500 bg-slate-950 p-2 rounded">
+              Engine: Edge TTS + Whisper<br>Output: Master Audio MP3
+            </div>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="bg-slate-900/90 border border-slate-700/80 rounded-2xl p-5 space-y-3 relative">
+            <div class="w-8 h-8 rounded-lg bg-purple-500/20 text-purple-400 font-bold flex items-center justify-center text-xs">
+              04
+            </div>
+            <h3 class="font-bold text-white text-sm">Headless Motion Render</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              GSAP springs render deterministically in headless Chromium via HyperFrames and muxes with FFmpeg.
+            </p>
+            <div class="text-[10px] font-mono text-slate-500 bg-slate-950 p-2 rounded">
+              Engine: HyperFrames + FFmpeg<br>Output: 1080x1920 MP4
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Embed Modal -->
+  <div id="embed-modal" class="hidden fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="glass-panel bg-slate-950 border border-slate-800 rounded-3xl max-w-xl w-full p-6 space-y-4">
+      <div class="flex items-center justify-between">
+        <h3 class="font-bold text-white text-base flex items-center gap-2">
+          <i data-lucide="code" class="w-5 h-5 text-brand-400"></i>
+          Embed on Your AI PM Portfolio
+        </h3>
+        <button onclick="closeEmbedModal()" class="text-slate-400 hover:text-white">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      
+      <p class="text-xs text-slate-400 leading-relaxed">
+        Paste this iframe into your Framer, Webflow, Notion, or personal portfolio website to let recruiters and founders test the live tool directly on your page.
+      </p>
+
+      <div class="bg-slate-900 rounded-xl p-3 font-mono text-[11px] text-slate-300 border border-slate-800 break-all select-all">
+        &lt;iframe src="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/video-editor/" width="100%" height="850" frameborder="0" style="border-radius: 24px; overflow: hidden;"&gt;&lt;/iframe&gt;
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2">
+        <button onclick="closeEmbedModal()" class="px-4 py-2 text-xs font-semibold rounded-lg text-slate-400 hover:text-white">
+          Cancel
+        </button>
+        <button onclick="copyEmbedCode()" id="copy-btn" class="px-4 py-2 text-xs font-semibold rounded-lg bg-brand-500 hover:bg-brand-600 text-white flex items-center gap-1.5">
+          <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+          <span>Copy Embed Code</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    lucide.createIcons();
+
+    // Tab Switching
+    function switchTab(tab) {
+      ['studio', 'prd', 'arch'].forEach(t => {
+        document.getElementById(`view-${t}`).classList.add('hidden');
+        document.getElementById(`tab-btn-${t}`).classList.remove('bg-brand-500', 'text-white');
+        document.getElementById(`tab-btn-${t}`).classList.add('text-slate-300');
+      });
+
+      document.getElementById(`view-${tab}`).classList.remove('hidden');
+      document.getElementById(`tab-btn-${tab}`).classList.add('bg-brand-500', 'text-white');
+      document.getElementById(`tab-btn-${tab}`).classList.remove('text-slate-300');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Preset Data
+    const PRESETS = {
+      navsutr: {
+        url: "https://www.flipkart.com/navsutr-typography-graphic-print-men-crew-neck-grey-t-shirt/p/itm1a2f6c2c95739?pid=TSHHSJGQ9NJ7HP9E",
+        title: "Navsutr Typography Grey Tee",
+        price: "₹399",
+        oldPrice: "₹999",
+        hook: "Stop buying cheap t-shirts. 1 grey tee beats 90% of your wardrobe.",
+        img: "https://rukminim2.flixcart.com/image/832/832/xif0q/t-shirt/k/u/r/m-tshirt-01-grey-nav-sutr-original-imahsjgqzqcyfzqd.jpeg?q=80"
+      },
+      jordans: {
+        url: "https://www.nike.com/in/air-jordan-1-retro-high-og",
+        title: "Air Jordan 1 High OG",
+        price: "₹16,995",
+        oldPrice: "₹22,000",
+        hook: "Why sneakerheads refuse to wear anything else in 2026.",
+        img: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=600&q=80"
+      },
+      keyboard: {
+        url: "https://www.keychron.com/k2-mechanical-keyboard",
+        title: "Keychron K2 Wireless Mechanical",
+        price: "₹6,499",
+        oldPrice: "₹8,999",
+        hook: "The 1 productivity desk upgrade that makes typing addictive.",
+        img: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=600&q=80"
+      }
+    };
+
+    function loadPreset(key) {
+      const data = PRESETS[key];
+      if (!data) return;
+      document.getElementById('input-url').value = data.url;
+      updatePhoneScreen(data);
+    }
+
+    function analyzeUrl() {
+      const btn = event.currentTarget;
+      btn.innerHTML = `<i data-lucide="loader-2" class="w-3.5 h-3.5 animate-spin"></i><span>Analyzing...</span>`;
+      lucide.createIcons();
+      setTimeout(() => {
+        btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i><span>Analyzed</span>`;
+        lucide.createIcons();
+        setTimeout(() => {
+          btn.innerHTML = `<i data-lucide="scan" class="w-3.5 h-3.5"></i><span>Analyze</span>`;
+          lucide.createIcons();
+        }, 2000);
+      }, 1000);
+    }
+
+    function selectStyle(style) {
+      ['ali', 'mehak', 'hormozi'].forEach(s => {
+        const el = document.getElementById(`card-style-${s}`);
+        el.className = "cursor-pointer border border-slate-700/80 bg-slate-900/40 rounded-xl p-3.5 hover:border-slate-500 transition-all space-y-2";
+      });
+      const selected = document.getElementById(`card-style-${style}`);
+      selected.className = "cursor-pointer border-2 border-brand-500 bg-brand-500/10 rounded-xl p-3.5 transition-all space-y-2";
+
+      const tags = {
+        ali: "Ali Abdaal Motion Engine",
+        mehak: "Mehak Mirza Spoken Word",
+        hormozi: "Alex Hormozi Direct Response"
+      };
+      document.getElementById('style-tag').innerText = tags[style];
+    }
+
+    function updatePhoneScreen(data) {
+      const content = document.getElementById('sim-scene-content');
+      content.innerHTML = `
+        <div class="space-y-1">
+          <h2 class="text-xl font-extrabold text-white leading-tight">
+            ${data.hook}
+          </h2>
+        </div>
+        <div class="relative w-48 h-48 mx-auto rounded-2xl overflow-hidden border border-white/20 shadow-2xl shadow-black/80 transform -rotate-2">
+          <img src="${data.img}" alt="${data.title}" class="w-full h-full object-cover">
+          <div class="absolute top-2 right-2 bg-emerald-600/90 text-[9px] font-bold px-1.5 py-0.5 rounded-full text-white">
+            VERIFIED
+          </div>
+        </div>
+        <div class="flex items-center justify-center gap-2 text-xs font-bold pt-1">
+          <span class="text-slate-500 line-through">${data.oldPrice}</span>
+          <span class="text-emerald-400 text-lg font-extrabold">${data.price} ONLY</span>
+        </div>
+      `;
+    }
+
+    // Phone Simulation Animation
+    let isPlaying = false;
+    let simInterval = null;
+    let simSeconds = 5;
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      const btnLabel = document.getElementById('play-label');
+      const btn = document.getElementById('play-btn');
+
+      if (isPlaying) {
+        btnLabel.innerText = "Pause";
+        btn.querySelector('i').setAttribute('data-lucide', 'pause');
+        lucide.createIcons();
+
+        simInterval = setInterval(() => {
+          simSeconds = (simSeconds + 1) % 29;
+          const pct = (simSeconds / 28) * 100;
+          document.getElementById('sim-progress').style.width = pct + "%";
+          document.getElementById('sim-time').innerText = `00:${simSeconds < 10 ? '0' : ''}${simSeconds} / 00:28`;
+        }, 1000);
+      } else {
+        btnLabel.innerText = "Play Mockup";
+        btn.querySelector('i').setAttribute('data-lucide', 'play');
+        lucide.createIcons();
+        clearInterval(simInterval);
+      }
+    }
+
+    function restartSim() {
+      simSeconds = 0;
+      document.getElementById('sim-progress').style.width = "0%";
+      document.getElementById('sim-time').innerText = "00:00 / 00:28";
+    }
+
+    // Embed Modal
+    function openEmbedModal() {
+      document.getElementById('embed-modal').classList.remove('hidden');
+    }
+    function closeEmbedModal() {
+      document.getElementById('embed-modal').classList.add('hidden');
+    }
+    function copyEmbedCode() {
+      const btn = document.getElementById('copy-btn');
+      navigator.clipboard.writeText('<iframe src="https://sonuyeahdav-creator.github.io/Ai-Product-Manager-portfolio-sonu/video-editor/" width="100%" height="850" frameborder="0" style="border-radius: 24px; overflow: hidden;"></iframe>');
+      btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5"></i><span>Copied!</span>`;
+      lucide.createIcons();
+      setTimeout(() => {
+        btn.innerHTML = `<i data-lucide="copy" class="w-3.5 h-3.5"></i><span>Copy Embed Code</span>`;
+        lucide.createIcons();
+        closeEmbedModal();
+      }, 1500);
+    }
+  </script>
+</body>
+</html>
